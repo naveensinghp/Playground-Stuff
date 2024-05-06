@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { Sun } from 'react-feather';
+import Spacer from '../src/components/Spacer/Spacer'
 
 export default function Home() {
   return (
-    
+
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -59,6 +61,8 @@ export default function Home() {
           Powered by{' '}
           <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
         </a>
+        <Spacer size={22} />
+        <Sun  />
       </footer>
 
       <style jsx>{`
