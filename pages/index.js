@@ -14,7 +14,7 @@ export default function Home() {
 
       <main>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
@@ -114,6 +114,8 @@ export default function Home() {
         body {
           padding: 0;
           margin: 0;
+          background: #101018;
+          color: #DBDEDF;
           font-family:
             -apple-system,
             BlinkMacSystemFont,

@@ -7,8 +7,12 @@
   align-items: center;
 }
 
+.titlecheck{
+  color: #AF7AD5;
+}
+
 .title a {
-  color: #0070f3;
+  color: #32E0C4;
   text-decoration: none;
 }
 
