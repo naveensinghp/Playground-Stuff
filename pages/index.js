@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { Sun } from 'react-feather';
 import Spacer from '../src/components/Spacer/Spacer'
-
+import Slider from '../src/components/Slider/Slider'
 export default function Home() {
   return (
 
@@ -11,7 +11,8 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Spacer size={120}/>
+      <Slider />
       <main>
         <h1 className={styles.title}>
            Welcome to <a href="https://nextjs.org">Next.js!</a>
@@ -114,7 +115,7 @@ export default function Home() {
         body {
           padding: 0;
           margin: 0;
-          background: #101018;
+          /* background: #101018; */
           color: #DBDEDF;
           font-family:
             -apple-system,
