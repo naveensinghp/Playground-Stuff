@@ -19,6 +19,7 @@ const Spacer = ({
         minHeight: height,
         ...style,
       }}
+      
       {...delegated}
     />
   ); 
