@@ -14,6 +14,14 @@ function Slider() {
        >
         <label htmlFor="volume-slider">Volume</label>
         <input 
+          style={{
+            width: '100%',
+            appearance: 'none',
+            outlineOffset: '6px',
+            outlineColor: 'red',
+            cursor: 'pointer',
+          
+          }}
           type="range"
           id="volume-slider"
           min={0}
