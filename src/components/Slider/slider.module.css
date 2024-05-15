@@ -1,6 +1,3 @@
-/* input{
-    background: hotpink;
-    display: block;
-    width: 100%;
-    max-width: 400px;
-} */
+#volume-slider{
+    width: 10%;
+}
