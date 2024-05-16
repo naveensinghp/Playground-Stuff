@@ -1,8 +1,11 @@
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family:
+  font-family: "Comfortaa", sans-serif;
+  /* font-family:
     Inter,
     -apple-system,
     BlinkMacSystemFont,
@@ -14,7 +17,8 @@ body {
     Fira Sans,
     Droid Sans,
     Helvetica Neue,
-    sans-serif;
+    sans-serif; */
+    
 }
 
 a {
@@ -30,3 +34,4 @@ img {
   max-width: 100%;
   height: auto;
 }
+
