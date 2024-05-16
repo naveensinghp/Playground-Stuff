@@ -1,7 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
+.wrapper{
+  color: hotpink;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.maincontainer{
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainwrapper{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.rowleft{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rowright{
+
+}
+
+.csssnipet{
+  background: hotpink;
+  width: 450px;
+  height: 200px;
+  border-radius: 12px;
+}
+
 .container {
-  min-height: 100vh;
+  min-height: 50vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
@@ -9,12 +47,32 @@
   align-items: center;
 }
 
+.addcolor{
+  width: 100px;
+  aspect-ratio: 1 / 1;
+  min-height: 90px;
+  cursor: pointer;
+  margin: 10px;
+  border: none;
+  background: grey;
+  border-radius: 5px;
+}
+
+.addcolor:hover{
+  background: white;
+  border-color: none;
+}
+
 .titlecheck{
-  color: #AF7AD5;
+  /* color: #AF7AD5; */
+  color: #DBDEDF;
+  font-family: "Comfortaa", sans-serif;
 }
 
 .title{
+  color: #32E0C4;
   font-family: "Comfortaa", sans-serif;
+  display: flex;
 }
 
 .title a {
@@ -72,27 +130,6 @@
     border-color 0.15s ease;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-}
 
 @media (max-width: 600px) {
   .grid {

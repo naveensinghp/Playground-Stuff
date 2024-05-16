@@ -8,7 +8,7 @@ function GradientGen() {
     '#FFD500',
     '#000066',
     '#FF0040',
-    '#FF0040',
+    '#000066',
     '#FF0040',
   ]);
   const colorStops = colors.join(', ');
@@ -18,45 +18,48 @@ function GradientGen() {
     <>
       <div className={styles.mainwrapper}>
         <div className={styles.rowleft}>
-            <form style={{ display: 'flex',flexDirection: 'row' }}>
-              {colors.map((color,index) =>{
-                const colorId = `color -${index}`;
-                return (
-                  <div key={colorId} style={{ display: 'flex', flexDirection: 'column'}}>
-                      {/* <label htmlFor={colorId}>Color {index +1}</label> */}
-                      <input 
-                        id={colorId}
-                        type='color'
-                        value={color}
-                        style={{ width: '100px',height: '100px', cursor: 'pointer', margin: '10px'}} 
-                        onChange={setColors}
-                      />
-                  </div>
-                );
-              })}
-            </form>
+          <h3>Colors : </h3>
+          <form>
+            {colors.map((color,index) =>{
+              const colorId = `color -${index}`;
+              return (
+                <input 
+                      key={colorId}
+                      id={colorId}
+                      type='color'
+                      value={color}
+                      className={styles.addcolor}
+                      onChange={setColors}
+                />
+              );
+            })}
+          </form>
+          {/* <h3>Colors Mode : </h3>
+          <form>
+            {colors.map((color,index) =>{
+              const colorId = `color -${index}`;
+              return (
+                <input 
+                      key={colorId}
+                      id={colorId}
+                      type='color'
+                      value={color}
+                      style={{width: '100px',height: '100px', cursor: 'pointer', margin: '10px'}} 
+                      onChange={setColors}
+                />
+              );
+            })}
+          </form> */}
         </div>
         <div className={styles.rowright}>
-                <Spacer size={10} />
-                <h3>Your Gradient : </h3>
-              <div 
-                className={styles.csssnipet} 
-                style={{
-                  backgroundImage,
+          <h3>Your Gradient : </h3>
+            <div 
+              className={styles.csssnipet} 
+              style={{
+                backgroundImage,
               }}>
-           </div>
-        </div>
-        <Spacer size={10} />
-        <div className={styles.rowright}>
-                <Spacer size={10} />
-                <h3>Your Gradient : </h3>
-              <div 
-                className={styles.csssnipet} 
-                style={{
-                  backgroundImage,
-              }}>
-           </div>
-        </div>
+          </div>
+        </div>   
       </div>
     </>
   );
