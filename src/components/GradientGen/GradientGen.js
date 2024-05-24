@@ -5,6 +5,7 @@ import Spacer from '../Spacer/Spacer';
 import { X } from 'react-feather';
 import { animated } from 'react-spring';
 import useBoop from '../../../hooks/use-boop';
+import Slider from '../Slider/Slider';
 
 
 function GradientGen() {
@@ -27,7 +28,7 @@ function GradientGen() {
   console.log('colors',colors);
   return (
     <>
-    
+      <Slider />
       <div className={styles.mainwrapper}>
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
@@ -50,7 +51,6 @@ function GradientGen() {
               );
             })}
           </form> 
-          <h3>Colors Mode : </h3>     
           {/* <h3>Colors Mode : </h3>
           <form>
             {colors.map((color,index) =>{
@@ -77,26 +77,20 @@ function GradientGen() {
               }}>
           </div>
         </div>
-        {/* <Tag href="#" onMouseEnter={trigger}>
-          Hover me
-          <animated.span style={style}>
-            <span className="viewarrow"> &nbsp; → </span>
-          </animated.span>
-        </Tag> */}
-        <div className={styles.testhover} style={{ display: 'flex',flexDirection: 'column',alignItems: 'end' }}>
-           
-            {/* <X className={styles.closeicon} size={36} />
-            <input type='color' className={styles.addcolor} onChange={setColors} /> */}
+        <div 
+            className={styles.testhover} 
+            style={{ display: 'flex',flexDirection: 'column',alignItems: 'end' }}>
              <animated.span style={style}>
               <span className="viewarrow"> &nbsp; 
-              <X className={styles.closeicon} size={36} /> 
-                <input type='color' className={styles.addcolor} onChange={setColors}  onMouseEnter={trigger}  />
+                <input 
+                  type='color' 
+                  className={styles.addcolor} 
+                  onChange={setColors}  
+                  onMouseEnter={trigger}  />
+                   <X className={styles.closeicon} size={36} /> 
               </span>
             </animated.span>
-        </div>
-        <div>
-        <span className={styles.arrow}>→</span>
-          </div>   
+        </div>  
       </div>
     </>
   );
