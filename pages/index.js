@@ -15,16 +15,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <main>
-          <h2 className={styles.title}>Gradient Generator ✨</h2>
+          <h2 className={styles.title}>Gradient Generator</h2>
           <App />
         </main>
       <style jsx global>{`
+        /* :root {
+            --color-gray-50: hsl(210deg, 19%, 10%);
+        }, */
         html,
         body {
+          --bg: #101018;
+          --color: #DBDEDF;
+          --test: 'hotpink';
           padding: 0;
           margin: 0;
-          background: #101018;
-          color: #DBDEDF;
+          background: var(--bg);
+          color: var(--color);
           font-family: "Comfortaa", sans-serif;
         }
         * {
