@@ -17,9 +17,10 @@ function Slider() {
           style={{
             width: '100%',
             appearance: 'none',
-            outlineOffset: '6px',
+            outlineOffset: '12px',
             outlineColor: 'red',
             cursor: 'pointer',
+            appearance: 'none'
           
           }}
           type="range"
@@ -33,7 +34,7 @@ function Slider() {
         />
       </form>
       <p>
-        <strong>Current Value</strong>
+        <strong>Current Value {' '}</strong>
           {volume}
       </p>
     </>

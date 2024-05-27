@@ -18,13 +18,12 @@ function GradientGen() {
   ]);
 
   const [style, trigger] = useBoop({x: 7 });
-
   const [numOfVisibleColors,setNumOfVisibleColors] = React.useState(4);
   const visibleColors = colors.slice(0,numOfVisibleColors)
-
   const colorStops = visibleColors.join(', ');
   const backgroundImage = `linear-gradient(${colorStops})`
   const Tag = false ? 'a' : 'button';
+  
   console.log('colors',colors);
   return (
     <>
