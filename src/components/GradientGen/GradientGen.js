@@ -27,7 +27,7 @@ function GradientGen() {
   console.log('colors',colors);
   return (
     <>
-      <Slider />
+      
       <div className={styles.mainwrapper}>
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
@@ -66,6 +66,9 @@ function GradientGen() {
               );
             })}
           </form> */}
+          <h3>Colors Mode : </h3>
+          
+          {/* <Slider /> */}
         </div>
         <div className={styles.rowright}>
           <h3>Your Gradient : </h3>
