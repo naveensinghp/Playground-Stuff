@@ -2,11 +2,11 @@ import React from 'react';
 import styles from '../../../styles/Home.module.css';
 import { range } from '../../utils';
 import Spacer from '../Spacer/Spacer';
-import { X } from 'react-feather';
+import { X,Plus } from 'react-feather';
 import { animated } from 'react-spring';
 import useBoop from '../../../hooks/use-boop';
 import Slider from '../Slider/Slider';
-
+import styled from "styled-components";
 
 function GradientGen() {
   const [colors, setColors] = React.useState([
@@ -24,7 +24,7 @@ function GradientGen() {
   const backgroundImage = `linear-gradient(${colorStops})`
   const Tag = false ? 'a' : 'button';
   
-  console.log('colors',colors);
+  
   return (
     <>
       
@@ -67,6 +67,11 @@ function GradientGen() {
             })}
           </form> */}
           <h3>Colors Mode : </h3>
+          <div >
+            <label>
+               <input type="radio" /> Male
+            </label>
+          </div>
           
           {/* <Slider /> */}
         </div>
@@ -79,10 +84,10 @@ function GradientGen() {
               }}>
           </div>
         </div>
-        <div 
+        {/* <div 
             className={styles.testhover} 
             style={{ display: 'flex',flexDirection: 'column',alignItems: 'end' }}>
-             <animated.span style={style}>
+             <span style={style}>
               <span className="viewarrow"> &nbsp; 
                 <input 
                   type='color' 
@@ -91,11 +96,71 @@ function GradientGen() {
                   onMouseEnter={trigger}  />
                    <X className={styles.closeicon} size={36} /> 
               </span>
-            </animated.span>
-        </div>  
+            </span>
+        </div>   */}
+        <Test />
+        {/* <a className={styles.tt1}>Hover Me</a>
+        <div className={styles.tt2}>Stuff Shown on Hover</div> */}
+           <a className={styles.things}>Hover Me</a>
+         
+         <TestAdd />
       </div>
     </>
   );
 }
 
+function TestAdd(){
+  return(
+    // <ButtonStuff>
+      
+    // </ButtonStuff>
+    <Wrapper>
+       <input 
+        type='color' 
+        className={styles.addcolor}   
+      />
+      <AddIconPosition>
+        <Plus size={28} /> 
+       </AddIconPosition>
+    </Wrapper>
+  );
+}
+
+function Test(){
+  return(
+    <Wrapper>
+       <input 
+        type='color' 
+        className={styles.addcolor}   
+      />
+       <X className={styles.closeicon} size={28} /> 
+    </Wrapper>
+  );
+}
+
 export default GradientGen;
+
+const AddIconPosition = styled.div`
+  position: relative;
+  margin: 0 auto;
+  top: -68px;
+  cursor: pointer;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const ButtonStuff = styled.div`
+  border: red;
+  background: hotpink;
+  padding: 0;
+  width: 96px;
+  height: 96px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+`;
