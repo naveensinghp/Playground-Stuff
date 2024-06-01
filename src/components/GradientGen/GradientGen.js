@@ -7,6 +7,8 @@ import { animated } from 'react-spring';
 import useBoop from '../../../hooks/use-boop';
 import Slider from '../Slider/Slider';
 import styled from "styled-components";
+import { useSpring, animated } from '@react-spring/web'
+
 
 function GradientGen() {
   const [colors, setColors] = React.useState([
