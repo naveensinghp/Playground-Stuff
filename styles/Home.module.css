@@ -48,20 +48,57 @@
 }
 
 .addcolor{
-  width: 100px;
+  width: 96px;
   aspect-ratio: 1 / 1;
-  min-height: 90px;
+  min-height: 96px;
   cursor: pointer;
   margin: 10px;
   border: none;
-  background: grey;
+  background: #51565c;
   border-radius: 5px;
 }
 
 .addcolor:hover{
-  background: white;
+  transition: transform 250ms;
+  background: hsl(210deg 5.64% 74.4%);
   border-color: none;
 }
+
+.testhover:hover .arrow{
+  background: #32E0C4;
+}
+
+.addcolor:hover .arrow{
+  background: #32E0C4;
+}
+
+.closeicon{
+  display: none;
+}
+
+.addcolor:hover +  .closeicon {
+  transition: opacity 0.5s ease-in-out;
+  translate: 46px 20px;
+  display: block;
+}
+
+.tt2{
+  display: none;
+}
+
+.tt1:hover + .tt2{
+  display: block;
+}
+
+.things{
+  transform: translateX(0px);
+  transition: transform 400ms ease-out;
+}
+
+.thing:hover{
+  transform: translateX(100px);
+}
+
 
 .titlecheck{
   /* color: #AF7AD5; */

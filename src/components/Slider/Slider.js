@@ -1,5 +1,6 @@
 import React from 'react';
 import {styles} from './slider.module.css'
+import Spacer from '../Spacer/Spacer';
 
 function Slider() {
   const [volume,setVolume] = React.useState(50);
@@ -13,6 +14,7 @@ function Slider() {
         }}
        >
         <label htmlFor="volume-slider">Volume</label>
+        <Spacer size={16} />
         <input 
           style={{
             width: '100%',

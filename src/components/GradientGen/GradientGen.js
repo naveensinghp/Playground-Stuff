@@ -3,21 +3,20 @@ import styles from '../../../styles/Home.module.css';
 import { range } from '../../utils';
 import Spacer from '../Spacer/Spacer';
 import { X,Plus } from 'react-feather';
-import { animated } from 'react-spring';
 import useBoop from '../../../hooks/use-boop';
 import Slider from '../Slider/Slider';
 import styled from "styled-components";
-import { useSpring, animated } from '@react-spring/web'
+
 
 
 function GradientGen() {
   const [colors, setColors] = React.useState([
     '#FFD500',
     '#000066',
-    '#FF0040',
-    '#000066',
-    '#FF0040',
+   
   ]);
+
+
 
   const [style, trigger] = useBoop({x: 7 });
   const [numOfVisibleColors,setNumOfVisibleColors] = React.useState(4);
@@ -34,7 +33,7 @@ function GradientGen() {
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
           <form>
-            {colors.map((color,index) =>{
+            {/* {colors.map((color,index) =>{
               const colorId = `color -${index}`;
               return (
                 <input 
@@ -50,7 +49,18 @@ function GradientGen() {
                       }}
                 />
               );
-            })}
+            })} */}
+            {range(3).map((num) => (
+            //  <input 
+            //    key={num}
+            //    className={styles.addcolor}
+            //    value="#000066"
+            //    type='color'
+            //  />
+            <div className={styles.addcolor}>
+
+            </div>
+           ))}
           </form> 
           {/* <h3>Colors Mode : </h3>
           <form>
@@ -100,26 +110,30 @@ function GradientGen() {
               </span>
             </span>
         </div>   */}
-        <Test />
+        {/* <Test /> */}
         {/* <a className={styles.tt1}>Hover Me</a>
         <div className={styles.tt2}>Stuff Shown on Hover</div> */}
-           <a className={styles.things}>Hover Me</a>
-         
-         <TestAdd />
+           {/* <a className={styles.things}>Hover Me</a> */}
+         {/* <TestAdd /> */}
       </div>
     </>
   );
 }
 
 function TestAdd(){
+  const [defaultcolor,setDefaultColor] = React.useState('#FF0040')
+  const [isClicked,setClicked] = React.useState(false)
+  function onClickInput(){
+    setClicked(true)
+
+  }
   return(
-    // <ButtonStuff>
-      
-    // </ButtonStuff>
     <Wrapper>
        <input 
         type='color' 
-        className={styles.addcolor}   
+        value={defaultcolor}
+        className={styles.addcolor}
+        onChange={setDefaultColor}   
       />
       <AddIconPosition>
         <Plus size={28} /> 
