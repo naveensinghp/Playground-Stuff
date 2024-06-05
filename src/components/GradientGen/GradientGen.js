@@ -18,17 +18,28 @@ function GradientGen() {
 
 
 
-  const [style, trigger] = useBoop({x: 7 });
-  const [numOfVisibleColors,setNumOfVisibleColors] = React.useState(4);
+  
+  const [numOfVisibleColors,setNumOfVisibleColors] = React.useState(3);
   const visibleColors = colors.slice(0,numOfVisibleColors)
   const colorStops = visibleColors.join(', ');
   const backgroundImage = `linear-gradient(${colorStops})`
-  const Tag = false ? 'a' : 'button';
+
   
+  function addColor(){
+    if(visibleColors.length >=5){
+      return ;
+    }
+    const nextColor = [...colors];
+    nextColor.push('#FF0000')
+    setColors(nextColor)
+    setNumOfVisibleColors(numOfVisibleColors + 1)
+  }
   
   return (
     <>
-      
+      <button onClick={addColor}>Add Color</button>
+     
+      <button>Remove Color</button>
       <div className={styles.mainwrapper}>
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
@@ -50,17 +61,31 @@ function GradientGen() {
                 />
               );
             })} */}
-            {range(3).map((num) => (
-            //  <input 
-            //    key={num}
-            //    className={styles.addcolor}
-            //    value="#000066"
-            //    type='color'
-            //  />
-            <div className={styles.addcolor}>
-
-            </div>
-           ))}
+            {/* {range(3).map((num) => (
+             <input 
+               key={num}
+               className={styles.addcolor}
+               value="#000066"
+               type='color'
+             />
+           ))} */}
+           {visibleColors.map((color,index) => {
+            const colorId = `color-${index}`
+              return (
+                <input 
+                      key={colorId}
+                      id={colorId}
+                      type="color"
+                      value={color}
+                      className={styles.addcolor}
+                      onChange={event => {
+                        const newcolor = [...colors]
+                        newcolor[index] = event.target.value;
+                        setColors(newcolor);
+                      }}
+                />
+              );
+           })}
           </form> 
           {/* <h3>Colors Mode : </h3>
           <form>
