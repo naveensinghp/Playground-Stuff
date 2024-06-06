@@ -13,7 +13,7 @@ function GradientGen() {
   const [colors, setColors] = React.useState([
     '#FFD500',
     '#000066',
-   
+
   ]);
 
 
@@ -34,12 +34,23 @@ function GradientGen() {
     setColors(nextColor)
     setNumOfVisibleColors(numOfVisibleColors + 1)
   }
+
+  function removeColor(){
+    
+    if(visibleColors.length <=2){
+      return ;
+    }
+    const nextColor = [...colors];
+    nextColor.pop('#FF0000')
+    setColors(nextColor)
+    setNumOfVisibleColors(numOfVisibleColors - 1)
+  }
   
   return (
     <>
       <button onClick={addColor}>Add Color</button>
      
-      <button>Remove Color</button>
+      <button onClick={removeColor}>Remove Color</button>
       <div className={styles.mainwrapper}>
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
@@ -139,7 +150,7 @@ function GradientGen() {
         {/* <a className={styles.tt1}>Hover Me</a>
         <div className={styles.tt2}>Stuff Shown on Hover</div> */}
            {/* <a className={styles.things}>Hover Me</a> */}
-         {/* <TestAdd /> */}
+           {/* <TestAdd  /> */}
       </div>
     </>
   );
@@ -154,15 +165,11 @@ function TestAdd(){
   }
   return(
     <Wrapper>
-       <input 
-        type='color' 
-        value={defaultcolor}
-        className={styles.addcolor}
-        onChange={setDefaultColor}   
-      />
-      <AddIconPosition>
-        <Plus size={28} /> 
-       </AddIconPosition>
+       <Button>
+          <AddIconPosition>
+              <Plus size={28} /> 
+          </AddIconPosition>
+       </Button>
     </Wrapper>
   );
 }
@@ -174,17 +181,32 @@ function Test(){
         type='color' 
         className={styles.addcolor}   
       />
-       <X className={styles.closeicon} size={28} /> 
+       <X className={styles.closeicon} size={72} /> 
     </Wrapper>
   );
 }
 
 export default GradientGen;
 
+
+const Button = styled.button`
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+   height: 140px;
+   width: 120px;
+   cursor: pointer;
+  
+
+`;
+
 const AddIconPosition = styled.div`
   position: relative;
   margin: 0 auto;
-  top: -68px;
   cursor: pointer;
 `;
 
