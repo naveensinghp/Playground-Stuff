@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <main>
-          <h2 className={styles.title}>Gradient Generator</h2>
+          <h6 className={styles.title}>Gradient Generator</h6>
           <App />
         </main>
       <style jsx global>{`
