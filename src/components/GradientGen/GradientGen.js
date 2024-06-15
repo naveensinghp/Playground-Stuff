@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState }  from 'react';
 import styles from '../../../styles/Home.module.css';
 import { range } from '../../utils';
 import Spacer from '../Spacer/Spacer';
@@ -6,6 +6,7 @@ import { X,Plus } from 'react-feather';
 import useBoop from '../../../hooks/use-boop';
 import Slider from '../Slider/Slider';
 import styled from "styled-components";
+import useToggle from '../../../hooks/use-toggle';
 
 
 
@@ -13,12 +14,8 @@ function GradientGen() {
   const [colors, setColors] = React.useState([
     '#FFD500',
     '#000066',
-
   ]);
 
-
-
-  
   const [numOfVisibleColors,setNumOfVisibleColors] = React.useState(3);
   const visibleColors = colors.slice(0,numOfVisibleColors)
   const colorStops = visibleColors.join(', ');
@@ -115,11 +112,7 @@ function GradientGen() {
             })}
           </form> */}
           <h3>Colors Mode : </h3>
-          <div >
-            <label>
-               <input type="radio" /> Male
-            </label>
-          </div>
+         
           
           {/* <Slider /> */}
         </div>
@@ -146,7 +139,8 @@ function GradientGen() {
               </span>
             </span>
         </div>   */}
-        {/* <Test /> */}
+        <Test />
+        
         {/* <a className={styles.tt1}>Hover Me</a>
         <div className={styles.tt2}>Stuff Shown on Hover</div> */}
            {/* <a className={styles.things}>Hover Me</a> */}
@@ -174,20 +168,52 @@ function TestAdd(){
   );
 }
 
+
+
 function Test(){
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(true);
+  };
+
+  const [isOn, toggleIsOn] = useToggle();
   return(
     <Wrapper>
        <input 
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         type='color' 
         className={styles.addcolor}   
       />
-       <X className={styles.closeicon} size={72} /> 
+       {/* <X  size={52} />  */}
+       {/* {isHovered ? <X  size={52} />  : undefined} */}
+       {isOn ? <X  size={32} />  : undefined}
+       <Spacer size={22} />
+       {isOn ? 'The light is on! ' + isOn : 'Hey who turned off the lights '  + isOn}
+      <button onClick={toggleIsOn}>
+        Press me
+      </button>
+       {/* <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{ backgroundColor: isHovered ? 'yellow' : 'red' }}
+      >
+        {isHovered ? 'Hovered!' : 'Not Hovered'}
+      </div> */}
     </Wrapper>
   );
 }
 
 export default GradientGen;
 
+
+const BtnWrapper = styled.button`
+
+
+`
 
 const Button = styled.button`
   background-color: #04AA6D;
@@ -197,11 +223,9 @@ const Button = styled.button`
   text-align: center;
   text-decoration: none;
   display: inline-block;
-   height: 140px;
-   width: 120px;
-   cursor: pointer;
-  
-
+  height: 140px;
+  width: 120px;
+  cursor: pointer;
 `;
 
 const AddIconPosition = styled.div`
