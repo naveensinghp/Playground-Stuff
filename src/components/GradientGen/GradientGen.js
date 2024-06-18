@@ -111,9 +111,7 @@ function GradientGen() {
               );
             })}
           </form> */}
-          <h3>Colors Mode : </h3>
-         
-          
+          <h3>Colors Mode : </h3> 
           {/* <Slider /> */}
         </div>
         <div className={styles.rowright}>
@@ -139,7 +137,7 @@ function GradientGen() {
               </span>
             </span>
         </div>   */}
-        <Test />
+        <TestAdd  addColor={addColor} />
         
         {/* <a className={styles.tt1}>Hover Me</a>
         <div className={styles.tt2}>Stuff Shown on Hover</div> */}
@@ -150,7 +148,8 @@ function GradientGen() {
   );
 }
 
-function TestAdd(){
+function TestAdd({addColor}){
+  console.log('addColor',addColor)
   const [defaultcolor,setDefaultColor] = React.useState('#FF0040')
   const [isClicked,setClicked] = React.useState(false)
   function onClickInput(){
@@ -159,9 +158,9 @@ function TestAdd(){
   }
   return(
     <Wrapper>
-       <Button>
+       <Button onClick={addColor}>
           <AddIconPosition>
-              <Plus size={28} /> 
+              <Plus size={32} /> 
           </AddIconPosition>
        </Button>
     </Wrapper>
@@ -216,16 +215,20 @@ const BtnWrapper = styled.button`
 `
 
 const Button = styled.button`
-  background-color: #04AA6D;
-  border: none;
+  background-color: hsl(212.73deg 12.36% 17.45%);
+  border: 4px solid red;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  height: 140px;
+  height: 120px;
   width: 120px;
   cursor: pointer;
+  border-radius: 10px;
+  &:hover{
+    border: 4px solid yellow;
+  }
 `;
 
 const AddIconPosition = styled.div`

@@ -19,14 +19,10 @@ export default function Home() {
           <App />
         </main>
       <style jsx global>{`
-        /* :root {
-            --color-gray-50: hsl(210deg, 19%, 10%);
-        }, */
         html,
         body {
           --bg: #101018;
           --color: #DBDEDF;
-          --test: 'hotpink';
           padding: 0;
           margin: 0;
           background: var(--bg);
