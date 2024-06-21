@@ -45,42 +45,17 @@ function GradientGen() {
   
   return (
     <>
-      <button onClick={addColor}>Add Color</button>
-     
-      <button onClick={removeColor}>Remove Color</button>
+      {/* <button onClick={addColor}>Add Color</button>
+      <button onClick={removeColor}>Remove Color</button> */}
       <div className={styles.mainwrapper}>
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
           <form>
-            {/* {colors.map((color,index) =>{
-              const colorId = `color -${index}`;
-              return (
-                <input 
-                      key={colorId}
-                      id={colorId}
-                      type="color"
-                      value={color}
-                      className={styles.addcolor}
-                      onChange={event => {
-                        const newcolor = [...colors]
-                        newcolor[index] = event.target.value;
-                        setColors(newcolor);
-                      }}
-                />
-              );
-            })} */}
-            {/* {range(3).map((num) => (
-             <input 
-               key={num}
-               className={styles.addcolor}
-               value="#000066"
-               type='color'
-             />
-           ))} */}
            {visibleColors.map((color,index) => {
             const colorId = `color-${index}`
               return (
-                <input 
+                <>
+                  <input 
                       key={colorId}
                       id={colorId}
                       type="color"
@@ -89,32 +64,20 @@ function GradientGen() {
                       onChange={event => {
                         const newcolor = [...colors]
                         newcolor[index] = event.target.value;
-                        setColors(newcolor);
+                        setColors(newcolor);   
                       }}
-                />
+                    />
+                </>
               );
            })}
-          </form> 
-          {/* <h3>Colors Mode : </h3>
-          <form>
-            {colors.map((color,index) =>{
-              const colorId = `color -${index}`;
-              return (
-                <input 
-                      key={colorId}
-                      id={colorId}
-                      type='color'
-                      value={color}
-                      style={{width: '100px',height: '100px', cursor: 'pointer', margin: '10px'}} 
-                      onChange={setColors}
-                />
-              );
-            })}
-          </form> */}
-          <h3>Colors Mode : </h3> 
+          </form>
+          <AddNew  addColor={addColor} />
+          
+          {/* <AddNew addColor={addColor} />  */}
+          {/* <h3>Colors Mode : </h3>  */}
           {/* <Slider /> */}
         </div>
-        <div className={styles.rowright}>
+        {/* <div className={styles.rowright}>
           <h3>Your Gradient : </h3>
             <div 
               className={styles.csssnipet} 
@@ -122,7 +85,7 @@ function GradientGen() {
                 backgroundImage,
               }}>
           </div>
-        </div>
+        </div> */}
         {/* <div 
             className={styles.testhover} 
             style={{ display: 'flex',flexDirection: 'column',alignItems: 'end' }}>
@@ -137,7 +100,7 @@ function GradientGen() {
               </span>
             </span>
         </div>   */}
-        <TestAdd  addColor={addColor} />
+        
         
         {/* <a className={styles.tt1}>Hover Me</a>
         <div className={styles.tt2}>Stuff Shown on Hover</div> */}
@@ -148,7 +111,7 @@ function GradientGen() {
   );
 }
 
-function TestAdd({addColor}){
+function AddNew({addColor}){
   console.log('addColor',addColor)
   const [defaultcolor,setDefaultColor] = React.useState('#FF0040')
   const [isClicked,setClicked] = React.useState(false)
@@ -160,7 +123,7 @@ function TestAdd({addColor}){
     <Wrapper>
        <Button onClick={addColor}>
           <AddIconPosition>
-              <Plus size={32} /> 
+              <Plus size={38} /> 
           </AddIconPosition>
        </Button>
     </Wrapper>
@@ -216,7 +179,7 @@ const BtnWrapper = styled.button`
 
 const Button = styled.button`
   background-color: hsl(212.73deg 12.36% 17.45%);
-  border: 4px solid red;
+  border: 4px solid black;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -227,7 +190,7 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 10px;
   &:hover{
-    border: 4px solid yellow;
+    border: 4px solid white;
   }
 `;
 
