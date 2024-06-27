@@ -33,6 +33,7 @@ function GradientGen() {
   }
 
   function removeColor(){
+    
     if(visibleColors.length <=2){
       return ;
     }
@@ -44,11 +45,12 @@ function GradientGen() {
   
   return (
     <>
-      <button onClick={addColor}>Add Color</button>
+      {/* <button onClick={addColor}>Add Color</button>
+      <button onClick={removeColor}>Remove Color</button> */}
       <div className={styles.mainwrapper}>
         <div className={styles.rowleft}>
-        <h3>Colors :  </h3> 
-          <form>
+          <h3>Colors :  </h3> 
+          {/* <form>
            {visibleColors.map((color,index) => {
             const colorId = `color-${index}`
               return (
@@ -68,9 +70,15 @@ function GradientGen() {
                 </>
               );
            })}
-          </form>
+          </form> */}
+          {/* <AddNew  addColor={addColor} /> */}
+          <RemoveBtn />
+          
+          {/* <AddNew addColor={addColor} />  */}
+          {/* <h3>Colors Mode : </h3>  */}
+          {/* <Slider /> */}
         </div>
-        <div className={styles.rowright}>
+        {/* <div className={styles.rowright}>
           <h3>Your Gradient : </h3>
             <div 
               className={styles.csssnipet} 
@@ -78,17 +86,109 @@ function GradientGen() {
                 backgroundImage,
               }}>
           </div>
-        </div>
+        </div> */}
+        {/* <div 
+            className={styles.testhover} 
+            style={{ display: 'flex',flexDirection: 'column',alignItems: 'end' }}>
+             <span style={style}>
+              <span className="viewarrow"> &nbsp; 
+                <input 
+                  type='color' 
+                  className={styles.addcolor} 
+                  onChange={setColors}  
+                  onMouseEnter={trigger}  />
+                   <X className={styles.closeicon} size={36} /> 
+              </span>
+            </span>
+        </div>   */}
+        
+        
+        {/* <a className={styles.tt1}>Hover Me</a>
+        <div className={styles.tt2}>Stuff Shown on Hover</div> */}
+           {/* <a className={styles.things}>Hover Me</a> */}
+           {/* <TestAdd  /> */}
       </div>
     </>
   );
 }
 
+function AddNew({addColor}){
+  console.log('addColor',addColor)
+  const [defaultcolor,setDefaultColor] = React.useState('#FF0040')
+  const [isClicked,setClicked] = React.useState(false)
+  function onClickInput(){
+    setClicked(true)
 
+  }
+  return(
+    <Wrapper>
+       <Button onClick={addColor}>
+          <AddIconPosition>
+              <Plus size={38} /> 
+          </AddIconPosition>
+       </Button>
+    </Wrapper>
+  );
+}
+
+function RemoveBtn(){
+  return(
+    <Wrapper>
+       <Button>
+          <AddIconPosition>
+              <X  size={38} />
+          </AddIconPosition>
+       </Button>
+    </Wrapper>
+  );
+}
+
+
+
+function Test(){
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(true);
+  };
+
+  const [isOn, toggleIsOn] = useToggle();
+  return(
+    <Wrapper>
+       <input 
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        type='color' 
+        className={styles.addcolor}   
+      />
+       {/* <X  size={52} />  */}
+       {/* {isHovered ? <X  size={52} />  : undefined} */}
+       {isOn ? <X  size={32} />  : undefined}
+       <Spacer size={22} />
+       {isOn ? 'The light is on! ' + isOn : 'Hey who turned off the lights '  + isOn}
+      <button onClick={toggleIsOn}>
+        Press me
+      </button>
+       {/* <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{ backgroundColor: isHovered ? 'yellow' : 'red' }}
+      >
+        {isHovered ? 'Hovered!' : 'Not Hovered'}
+      </div> */}
+    </Wrapper>
+  );
+}
 
 export default GradientGen;
 
 
+const BtnWrapper = styled.button`
+
+
+`
 
 const Button = styled.button`
   background-color: hsl(212.73deg 12.36% 17.45%);
