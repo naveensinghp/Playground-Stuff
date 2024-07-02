@@ -135,9 +135,9 @@ function RemoveBtn(){
   return(
     <Wrapper>
        <Button>
-          <AddIconPosition>
+          <ButtonHover>
               <X  size={38} />
-          </AddIconPosition>
+          </ButtonHover>
        </Button>
     </Wrapper>
   );
@@ -185,6 +185,17 @@ function Test(){
 export default GradientGen;
 
 
+const ButtonHover = styled.div`
+  /* display: none; */
+  &:hover{
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    position: absolute;
+    bottom: -50px;
+    left: 48px;
+  }
+  
+`;
+
 const BtnWrapper = styled.button`
 
 
@@ -216,6 +227,7 @@ const AddIconPosition = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  position: absolute;
 `
 
 const ButtonStuff = styled.div`
