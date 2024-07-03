@@ -7,6 +7,7 @@ import useBoop from '../../../hooks/use-boop';
 import Slider from '../Slider/Slider';
 import styled from "styled-components";
 import useToggle from '../../../hooks/use-toggle';
+import Csscode from '../Csscode/Csscode';
 
 
 
@@ -14,6 +15,7 @@ function GradientGen() {
   const [colors, setColors] = React.useState([
     '#FFD500',
     '#000066',
+    '#FF75FA',
   ]);
 
   const [numOfVisibleColors,setNumOfVisibleColors] = React.useState(3);
@@ -45,12 +47,13 @@ function GradientGen() {
   
   return (
     <>
+     <Csscode/>
       {/* <button onClick={addColor}>Add Color</button>
       <button onClick={removeColor}>Remove Color</button> */}
       <div className={styles.mainwrapper}>
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
-          {/* <form>
+          <form>
            {visibleColors.map((color,index) => {
             const colorId = `color-${index}`
               return (
@@ -70,7 +73,7 @@ function GradientGen() {
                 </>
               );
            })}
-          </form> */}
+          </form>
           {/* <AddNew  addColor={addColor} /> */}
           <RemoveBtn />
           
@@ -78,7 +81,8 @@ function GradientGen() {
           {/* <h3>Colors Mode : </h3>  */}
           {/* <Slider /> */}
         </div>
-        {/* <div className={styles.rowright}>
+       
+        <div className={styles.rowright}>
           <h3>Your Gradient : </h3>
             <div 
               className={styles.csssnipet} 
@@ -86,7 +90,8 @@ function GradientGen() {
                 backgroundImage,
               }}>
           </div>
-        </div> */}
+        </div>
+       
         {/* <div 
             className={styles.testhover} 
             style={{ display: 'flex',flexDirection: 'column',alignItems: 'end' }}>
