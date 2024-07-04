@@ -7,11 +7,12 @@ import useBoop from '../../../hooks/use-boop';
 import Slider from '../Slider/Slider';
 import styled from "styled-components";
 import useToggle from '../../../hooks/use-toggle';
-import Csscode from '../Csscode/Csscode';
+// import Csscode from '../Csscode/Csscode';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 
-
-function GradientGen() {
+const GradientGen = () => {
   const [colors, setColors] = React.useState([
     '#FFD500',
     '#000066',
@@ -34,8 +35,29 @@ function GradientGen() {
     setNumOfVisibleColors(numOfVisibleColors + 1)
   }
 
-  function removeColor(){
-    
+
+  const Csscode = () => {
+    const codeString = `background-image: linear-gradient(
+      45deg,
+      hsl(240deg 50% 81%) 0%,
+      hsl(273deg 43% 80%) 11%,
+      hsl(311deg 41% 81%) 22%,
+      hsl(335deg 62% 84%) 33%,
+      hsl(351deg 78% 87%) 44%,
+      hsl(6deg 87% 88%) 56%,
+      hsl(17deg 86% 87%) 67%,
+      hsl(27deg 77% 87%) 78%,
+      hsl(38deg 63% 87%) 89%,
+      hsl(56deg 45% 88%) 100%
+    );`;
+    return (
+      <SyntaxHighlighter language="css" style={materialDark}>
+        {codeString}
+      </SyntaxHighlighter>
+    );
+  }
+
+  const removeColor = () => {
     if(visibleColors.length <=2){
       return ;
     }
@@ -44,10 +66,8 @@ function GradientGen() {
     setColors(nextColor)
     setNumOfVisibleColors(numOfVisibleColors - 1)
   }
-  
   return (
     <>
-     <Csscode/>
       {/* <button onClick={addColor}>Add Color</button>
       <button onClick={removeColor}>Remove Color</button> */}
       <div className={styles.mainwrapper}>
@@ -74,23 +94,23 @@ function GradientGen() {
               );
            })}
           </form>
+         
           {/* <AddNew  addColor={addColor} /> */}
-          <RemoveBtn />
+          {/* <RemoveBtn /> */}
           
           {/* <AddNew addColor={addColor} />  */}
-          {/* <h3>Colors Mode : </h3>  */}
+          <h3>Colors Mode : </h3> 
+          <ColorModes>
+             <Button> LRGB </Button>
+             <Button> HSL </Button>
+             <Button> HSV </Button>
+             <Button> HCL </Button>
+             <Button> LAB </Button>
+          </ColorModes>
           {/* <Slider /> */}
         </div>
-       
-        <div className={styles.rowright}>
-          <h3>Your Gradient : </h3>
-            <div 
-              className={styles.csssnipet} 
-              style={{
-                backgroundImage,
-              }}>
-          </div>
-        </div>
+        <Csscode/>
+        
        
         {/* <div 
             className={styles.testhover} 
@@ -113,11 +133,21 @@ function GradientGen() {
            {/* <a className={styles.things}>Hover Me</a> */}
            {/* <TestAdd  /> */}
       </div>
+      <div className={styles.grr}>
+          <h3>Your Gradient : </h3>
+            <div 
+              className={styles.csssnipet} 
+              style={{
+                backgroundImage,
+              }}>
+          </div>
+        </div>
+        {/* <FooterCard /> */}
     </>
   );
 }
 
-function AddNew({addColor}){
+const AddNew = ({addColor}) => {
   console.log('addColor',addColor)
   const [defaultcolor,setDefaultColor] = React.useState('#FF0040')
   const [isClicked,setClicked] = React.useState(false)
@@ -136,7 +166,11 @@ function AddNew({addColor}){
   );
 }
 
-function RemoveBtn(){
+const FooterCard = () => {
+  <div style={{ color: 'white'}}>naveensingh</div>
+}
+
+const RemoveBtn = () => {
   return(
     <Wrapper>
        <Button>
@@ -187,8 +221,12 @@ function Test(){
   );
 }
 
+
 export default GradientGen;
 
+const ColorModes = styled.div`
+
+`
 
 const ButtonHover = styled.div`
   /* display: none; */
@@ -201,10 +239,6 @@ const ButtonHover = styled.div`
   
 `;
 
-const BtnWrapper = styled.button`
-
-
-`
 
 const Button = styled.button`
   background-color: hsl(212.73deg 12.36% 17.45%);
@@ -247,3 +281,4 @@ const ButtonStuff = styled.div`
   align-items: center;
   border-radius: 5px;
 `;
+

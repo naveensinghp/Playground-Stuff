@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
-function Csscode() {
+const Csscode = () => {
   const codeString = `background-image: linear-gradient(
     45deg,
     hsl(240deg 50% 81%) 0%,
