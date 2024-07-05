@@ -3,9 +3,7 @@ import GradientGen from '../GradientGen/GradientGen';
 
 function App() {
   return (
-    <>
-      <GradientGen />
-    </>
+    <GradientGen />
   );
 }
 

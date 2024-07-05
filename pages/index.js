@@ -15,6 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <main>
+          <Spacer size={60} />
           <h6 className={styles.title}>Gradient Generator</h6>
           <App />
         </main>
