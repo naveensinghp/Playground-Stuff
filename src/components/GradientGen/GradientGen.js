@@ -70,7 +70,7 @@ const GradientGen = () => {
     <>
       {/* <button onClick={addColor}>Add Color</button>
       <button onClick={removeColor}>Remove Color</button> */}
-      <div className={styles.mainwrapper}>
+      <MainWrapper>
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
           <form>
@@ -107,7 +107,7 @@ const GradientGen = () => {
              <Button> HCL </Button>
              <Button> LAB </Button>
           </ColorModes>
-          {/* <Slider /> */}
+          <Slider />
         </div>
         <Csscode/>
         
@@ -132,7 +132,7 @@ const GradientGen = () => {
         <div className={styles.tt2}>Stuff Shown on Hover</div> */}
            {/* <a className={styles.things}>Hover Me</a> */}
            {/* <TestAdd  /> */}
-      </div>
+      </MainWrapper>
       <div className={styles.grr}>
           <h3>Your Gradient : </h3>
             <div 
@@ -224,6 +224,13 @@ function Test(){
 
 export default GradientGen;
 
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+`;
+
 const ColorModes = styled.div`
 
 `
@@ -281,4 +288,3 @@ const ButtonStuff = styled.div`
   align-items: center;
   border-radius: 5px;
 `;
-
