@@ -10,7 +10,6 @@ function Slider() {
     <>
 
       <form
-      styles
         onSubmit={(event) => {
           event.preventDefault();
         }}
@@ -19,7 +18,6 @@ function Slider() {
         <Spacer size={16} />
         <Inputwrapper 
           type="range"
-          id="volume-slider"
           min={0}
           max={100}
           value={volume}

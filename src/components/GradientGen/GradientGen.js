@@ -68,8 +68,6 @@ const GradientGen = () => {
   }
   return (
     <>
-      {/* <button onClick={addColor}>Add Color</button>
-      <button onClick={removeColor}>Remove Color</button> */}
       <MainWrapper>
         <div className={styles.rowleft}>
           <h3>Colors :  </h3> 
@@ -77,61 +75,36 @@ const GradientGen = () => {
            {visibleColors.map((color,index) => {
             const colorId = `color-${index}`
               return (
-                <>
+                <div
+                key={colorId}
+                className="color-wrapper"
+              >
                   <input 
-                      key={colorId}
-                      id={colorId}
-                      type="color"
-                      value={color}
-                      className={styles.addcolor}
-                      onChange={event => {
-                        const newcolor = [...colors]
-                        newcolor[index] = event.target.value;
-                        setColors(newcolor);   
-                      }}
-                    />
-                </>
-              );
+                    id={colorId}
+                    type="color"
+                    value={color}
+                    className={styles.addcolor}
+                    onChange={event => {
+                      const newcolor = [...colors]
+                      newcolor[index] = event.target.value;
+                      setColors(newcolor);   
+                    }}
+                  />
+          </div>
+            );
            })}
           </form>
-         
-          {/* <AddNew  addColor={addColor} /> */}
-          {/* <RemoveBtn /> */}
-          
-          {/* <AddNew addColor={addColor} />  */}
+        
           <h3>Colors Mode : </h3> 
-          <ColorModes>
-             <Button> LRGB </Button>
+            <Button> LRGB </Button>
              <Button> HSL </Button>
              <Button> HSV </Button>
              <Button> HCL </Button>
              <Button> LAB </Button>
-          </ColorModes>
           <Slider />
         </div>
         <Csscode/>
         
-       
-        {/* <div 
-            className={styles.testhover} 
-            style={{ display: 'flex',flexDirection: 'column',alignItems: 'end' }}>
-             <span style={style}>
-              <span className="viewarrow"> &nbsp; 
-                <input 
-                  type='color' 
-                  className={styles.addcolor} 
-                  onChange={setColors}  
-                  onMouseEnter={trigger}  />
-                   <X className={styles.closeicon} size={36} /> 
-              </span>
-            </span>
-        </div>   */}
-        
-        
-        {/* <a className={styles.tt1}>Hover Me</a>
-        <div className={styles.tt2}>Stuff Shown on Hover</div> */}
-           {/* <a className={styles.things}>Hover Me</a> */}
-           {/* <TestAdd  /> */}
       </MainWrapper>
       <div className={styles.grr}>
           <h3>Your Gradient : </h3>
@@ -142,7 +115,6 @@ const GradientGen = () => {
               }}>
           </div>
         </div>
-        {/* <FooterCard /> */}
     </>
   );
 }
@@ -202,21 +174,12 @@ function Test(){
         type='color' 
         className={styles.addcolor}   
       />
-       {/* <X  size={52} />  */}
-       {/* {isHovered ? <X  size={52} />  : undefined} */}
        {isOn ? <X  size={32} />  : undefined}
        <Spacer size={22} />
        {isOn ? 'The light is on! ' + isOn : 'Hey who turned off the lights '  + isOn}
       <button onClick={toggleIsOn}>
         Press me
       </button>
-       {/* <div
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        style={{ backgroundColor: isHovered ? 'yellow' : 'red' }}
-      >
-        {isHovered ? 'Hovered!' : 'Not Hovered'}
-      </div> */}
     </Wrapper>
   );
 }
@@ -232,7 +195,7 @@ const MainWrapper = styled.div`
 `;
 
 const ColorModes = styled.div`
-
+  display: flex;
 `
 
 const ButtonHover = styled.div`
