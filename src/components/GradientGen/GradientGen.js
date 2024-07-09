@@ -7,7 +7,7 @@ import useBoop from '../../../hooks/use-boop';
 import Slider from '../Slider/Slider';
 import styled from "styled-components";
 import useToggle from '../../../hooks/use-toggle';
-// import Csscode from '../Csscode/Csscode';
+import Csscode from '../Csscode/Csscode';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
@@ -36,26 +36,6 @@ const GradientGen = () => {
   }
 
 
-  const Csscode = () => {
-    const codeString = `background-image: linear-gradient(
-      45deg,
-      hsl(240deg 50% 81%) 0%,
-      hsl(273deg 43% 80%) 11%,
-      hsl(311deg 41% 81%) 22%,
-      hsl(335deg 62% 84%) 33%,
-      hsl(351deg 78% 87%) 44%,
-      hsl(6deg 87% 88%) 56%,
-      hsl(17deg 86% 87%) 67%,
-      hsl(27deg 77% 87%) 78%,
-      hsl(38deg 63% 87%) 89%,
-      hsl(56deg 45% 88%) 100%
-    );`;
-    return (
-      <SyntaxHighlighter language="css" style={materialDark}>
-        {codeString}
-      </SyntaxHighlighter>
-    );
-  }
 
   const removeColor = () => {
     if(visibleColors.length <=2){
@@ -69,16 +49,13 @@ const GradientGen = () => {
   return (
     <>
       <MainWrapper>
-        <div className={styles.rowleft}>
+        <ColorModes>
           <h3>Colors :  </h3> 
-          <form>
-           {visibleColors.map((color,index) => {
+          <form style={{ display : 'flex', flexDirection: 'row'}}>
+          {visibleColors.map((color,index) => {
             const colorId = `color-${index}`
               return (
-                <div
-                key={colorId}
-                className="color-wrapper"
-              >
+                <Colorsection key={colorId}>
                   <input 
                     id={colorId}
                     type="color"
@@ -90,21 +67,24 @@ const GradientGen = () => {
                       setColors(newcolor);   
                     }}
                   />
-          </div>
+                </Colorsection>
             );
            })}
           </form>
-        
-          <h3>Colors Mode : </h3> 
-            <Button> LRGB </Button>
-             <Button> HSL </Button>
-             <Button> HSV </Button>
-             <Button> HCL </Button>
-             <Button> LAB </Button>
-          <Slider />
-        </div>
-        <Csscode/>
-        
+          <h3>Colors Modes :  </h3> 
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <RadioButton 
+              type='radio'
+            
+            />Test
+          {/* <Button>Nes</Button>
+          <Button>Nes</Button>
+          <Button>Nes</Button>
+          <Button>Nes</Button> */}
+          </div>
+          
+        </ColorModes>
+        <Csscode />
       </MainWrapper>
       <div className={styles.grr}>
           <h3>Your Gradient : </h3>
@@ -196,7 +176,19 @@ const MainWrapper = styled.div`
 
 const ColorModes = styled.div`
   display: flex;
+  flex-direction: column;
 `
+
+const Colorsection = styled.div`
+  
+`;
+
+
+const RadioButton = styled.input`
+  background : hotpink;
+  width: 25px;
+
+`;
 
 const ButtonHover = styled.div`
   /* display: none; */

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
+import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 const Csscode = () => {
   const codeString = `background-image: linear-gradient(
-    45deg,
+    45deg dd,
     hsl(240deg 50% 81%) 0%,
     hsl(273deg 43% 80%) 11%,
     hsl(311deg 41% 81%) 22%,
@@ -18,7 +17,7 @@ const Csscode = () => {
     hsl(56deg 45% 88%) 100%
   );`;
   return (
-    <SyntaxHighlighter language="css" style={docco}>
+    <SyntaxHighlighter language="css" style={materialDark}>
       {codeString}
     </SyntaxHighlighter>
   );
