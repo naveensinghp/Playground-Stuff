@@ -10,6 +10,7 @@ import useToggle from '../../../hooks/use-toggle';
 import Csscode from '../Csscode/Csscode';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import Radiobutton from '../Radiobutton/Radiobutton';
 
 
 const GradientGen = () => {
@@ -73,10 +74,16 @@ const GradientGen = () => {
           </form>
           <h3>Colors Modes :  </h3> 
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <RadioButton 
-              type='radio'
-            
-            />Test
+            <RadioBtnWrapper>
+              <CustomRadioLabel>
+              <RadioButton 
+                type='radio'
+              />HSL
+              <CustomRadioMark />
+              </CustomRadioLabel>
+            </RadioBtnWrapper>
+           
+           {/* <Radiobutton>ff</Radiobutton> */}
           {/* <Button>Nes</Button>
           <Button>Nes</Button>
           <Button>Nes</Button>
@@ -183,8 +190,39 @@ const Colorsection = styled.div`
   
 `;
 
+const CustomRadioMark = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px; /* Size of the custom radio button */
+  height: 20px; /* Size of the custom radio button */
+  border: 2px solid red; /* Border color */
+  border-radius: 50%; /* Round shape */
+`;
+
+const CustomRadioMarkSelected = styled(CustomRadioMark)`
+  background-color: hotpink; /* Fill color when selected */
+`;
+
+const CustomRadioLabel = styled.label`
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  line-height: 1.5; /* Adjust to vertically align with the text */
+`;
+
+
+const RadioBtnWrapper = styled.div`
+  background: #fff;
+  color: black;
+  padding: 10px;
+  width: 200px;
+  border-radius: 8px;
+
+`
 
 const RadioButton = styled.input`
+  display: none;
   background : hotpink;
   width: 25px;
 
