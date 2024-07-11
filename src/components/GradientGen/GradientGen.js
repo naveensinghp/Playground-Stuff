@@ -82,6 +82,11 @@ const GradientGen = () => {
               <CustomRadioMark />
               </CustomRadioLabel>
             </RadioBtnWrapper>
+
+            <label>
+        <CustomRadioInput name="radioGroup" value="option1" />
+        Option 1
+      </label>
            
            {/* <Radiobutton>ff</Radiobutton> */}
           {/* <Button>Nes</Button>
@@ -202,22 +207,39 @@ const CustomRadioMark = styled.div`
 
 const CustomRadioMarkSelected = styled(CustomRadioMark)`
   background-color: hotpink; /* Fill color when selected */
+  border: 2px solid yellow;
+`;
+
+const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
+  /* Your custom CSS goes here */
+  /* Example styles: */
+  margin-right: 5px; /* Adjust spacing as needed */
+  &:checked {
+    /* Style for checked state */
+    border-color: #007bff; /* Example border color */
+    background-color: red; /* Example background color */
+  }
 `;
 
 const CustomRadioLabel = styled.label`
   position: relative;
   padding-left: 30px;
   cursor: pointer;
-  line-height: 1.5; /* Adjust to vertically align with the text */
+  line-height: 1.5; 
+  &:input{
+    
+  }
+ 
 `;
 
 
 const RadioBtnWrapper = styled.div`
-  background: #fff;
-  color: black;
+  background: #32E0C4;
+  color: #fff;
   padding: 10px;
   width: 200px;
   border-radius: 8px;
+ 
 
 `
 
