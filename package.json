@@ -13,10 +13,14 @@
     "react-dom": "18.2.0",
     "react-feather": "^2.0.10",
     "react-spring": "^9.7.3",
+    "react-syntax-highlighter": "^15.5.0",
     "styled-components": "^6.1.11",
     "use-sound": "^4.0.1"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.4"
   }
 }
