@@ -16,11 +16,11 @@ const Csscode = () => {
     hsl(38deg 63% 87%) 89%,
     hsl(56deg 45% 88%) 100%
   );`;
-  return (
+  return <>
     <SyntaxHighlighter language="css" style={materialDark}>
       {codeString}
     </SyntaxHighlighter>
-  );
+  </>
 }
 
 export default Csscode;
