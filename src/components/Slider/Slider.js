@@ -4,7 +4,7 @@ import Spacer from '../Spacer/Spacer';
 import styled from "styled-components";
 
 
-function Slider() {
+function Slider({ onData }) {
   const [volume,setVolume] = React.useState(50);
   return (
     <>
@@ -22,6 +22,7 @@ function Slider() {
           max={100}
           value={volume}
           onChange={ event => {
+            onData(event.target.value);
             setVolume(event.target.value)
           }}
         />
