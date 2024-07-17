@@ -38,6 +38,7 @@ function Slider({ onData }) {
 export default Slider;
 
 
+
 const Inputwrapper = styled.input`
   --handle-size: 20px;
   --handle-radius: 1000px;
@@ -61,20 +62,10 @@ const Inputwrapper = styled.input`
     height: 20px;
     width: 300px;
   }
-  &:active::-webkit-slider-thumb{
-    appearance: none;
-    -webkit-appearance: none;
-    height: var(--handle-size);
-    width: var(--handle-size);
-    border-radius: var(--handle-radius);
-    background: var(--handle-color);
-    cursor: grab;
-    transform: translateY(
-      calc(-50% + var(--track-size) / 2)
-    );
-    border: 2px solid var(--bg);
-  box-shadow: none;
+  &::-webkit-slider-thumb{
+    margin: -7px;
   }
+  
   &::-webkit-slider-runnable-track{
     width: calc(100% - var(--handle-size));
     height: var(--track-size);

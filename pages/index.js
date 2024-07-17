@@ -18,22 +18,7 @@ export default function Home() {
           <Spacer size={60} />
           <h6 className={styles.title}>Gradient Generator</h6>
           <App />
-        </main>
-      <style jsx global>{`
-        html,
-        body {
-          --bg: #101018;
-          --color: #DBDEDF;
-          padding: 0;
-          margin: 0;
-          background: var(--bg);
-          color: var(--color);
-          font-family: "Comfortaa", sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style> 
+        </main> 
     </div>
   );
 }
