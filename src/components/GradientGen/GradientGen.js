@@ -49,6 +49,8 @@ const GradientGen = () => {
   }
   return (
     <>
+      <button onClick={addColor}>Add Color</button>
+      <button onClick={removeColor}>Remove Color</button>
       <MainWrapper>
         <ColorModes>
           <h3>Colors :  </h3> 
@@ -74,18 +76,22 @@ const GradientGen = () => {
           </form>
           <h3>Colors Modes :  </h3> 
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <RadioBtnWrapper>
+            {/* <RadioBtnWrapper>
               <CustomRadioLabel>
               <RadioButton 
                 type='radio'
               />HSL
               <CustomRadioMark />
               </CustomRadioLabel>
-            </RadioBtnWrapper>
-
+            </RadioBtnWrapper> */}
+            <Spacer size={12} />
             <label>
-        <CustomRadioInput name="radioGroup" value="option1" />
-        Option 1
+          <RadioBtnWrapper>
+            <CustomRadioLabel>
+            <CustomRadioInput name="radioGroup" value="option1" />
+              HSL
+            </CustomRadioLabel>
+          </RadioBtnWrapper>
       </label>
            
            {/* <Radiobutton>ff</Radiobutton> */}
@@ -117,7 +123,6 @@ const AddNew = ({addColor}) => {
   const [isClicked,setClicked] = React.useState(false)
   function onClickInput(){
     setClicked(true)
-
   }
   return(
     <Wrapper>
@@ -148,7 +153,7 @@ const RemoveBtn = () => {
 
 
 
-function Test(){
+const Test = () => {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => {
     setIsHovered(true);
