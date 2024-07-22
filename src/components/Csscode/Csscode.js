@@ -2,7 +2,7 @@ import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-const Csscode = () => {
+const Csscode = ({code}) => {
   const codeString = `background-image: linear-gradient(
     45deg dd,
     hsl(240deg 50% 81%) 0%,
@@ -16,6 +16,7 @@ const Csscode = () => {
     hsl(38deg 63% 87%) 89%,
     hsl(56deg 45% 88%) 100%
   );`;
+ // const codeString = `${code}`;
   return <>
     <SyntaxHighlighter language="css" style={materialDark}>
       {codeString}
