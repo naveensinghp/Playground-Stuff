@@ -4,6 +4,7 @@ import Csscode from '../src/components/Csscode/Csscode';
 import Slider from '../src/components/Slider/Slider';
 import { useState } from 'react';
 import React from 'react';
+import styled from "styled-components";
 
 
 export default function Test() {
@@ -16,40 +17,43 @@ export default function Test() {
       };
     return(
         <>
-            {'Test'}-{childData ? childData : undefined}
+            {/* {'Test'}-{childData ? childData : undefined}
            <Slider onData={handleChildData} />
            <Csscode code={codeString} /> 
-           <GlobalStyles />
-           {/* <h1>Value - {count}</h1>
-           <ImportStuff count={count} />
-           <br/>
-           <SlowStuff count={deferredCount} /> 
-           <br/>
-           <button onClick={() => setCount(count + 1)}>
-                Increment
-            </button> */}
-           
+           <GlobalStyles /> */}
+        <RadioBtnWrapper>
+            <CustomRadioLabel>
+                <CustomRadioInput name="radioGroup" value="option1" />
+                HSL
+                </CustomRadioLabel>
+          </RadioBtnWrapper>
+                
         </>
     );
-
-
-    function ImportStuff({count}){
-        console.log(count)
-        return(<>
-        
-        'FastStuff ' + {count}
-        </>
-               
-        );
-    }
-    function SlowStuff({count}){
-        return(
-            <>
-                'SlowStuff ' + {count}
-            </>
-        );
-    }
 }
+
+const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
+  margin : 5px; /* Adjust spacing as needed */
+  &:checked {
+    border-color: #007bff; /* Example border color */
+    background-color: red; /* Example background color */
+    border-style: dotted;
+  }
+`;
+
+
+const CustomRadioLabel = styled.label`
+  cursor: pointer;
+  line-height: 1.5; 
+`;
+
+const RadioBtnWrapper = styled.div`
+  background: #32E0C4;
+  color: #fff;
+  padding: 10px;
+  width: 200px;
+  border-radius: 8px; 
+`
 
 
 
