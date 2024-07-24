@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
    v2.0 | 20110126
    License: none (public domain)
 */
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -55,6 +54,13 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+pre  {
+  background: rgb(37 37 47);
+  font-family: "Comfortaa", sans-serif;
+  font-size: 16px;
+  border-radius: 8px !important;
 }
 
 `

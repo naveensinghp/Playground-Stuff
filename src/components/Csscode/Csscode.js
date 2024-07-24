@@ -1,6 +1,8 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { Copy } from 'react-feather';
+import styled from 'styled-components';
 
 const Csscode = ({code}) => {
   const codeString = `background-image: linear-gradient(
@@ -18,10 +20,20 @@ const Csscode = ({code}) => {
   );`;
  // const codeString = `${code}`;
   return <>
+  <Wrapper>
+    <Copy />
     <SyntaxHighlighter language="css" style={materialDark}>
       {codeString}
     </SyntaxHighlighter>
+  </Wrapper>
   </>
 }
 
 export default Csscode;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: column;
+`;
