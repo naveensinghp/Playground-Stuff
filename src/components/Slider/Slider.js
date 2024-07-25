@@ -14,7 +14,7 @@ function Slider({ onData }) {
           event.preventDefault();
         }}
        >
-        <label htmlFor="volume-slider">Volume</label>
+        <label htmlFor="volume-slider">Precision </label>
         <Spacer size={16} />
         <Inputwrapper 
           type="range"
@@ -27,10 +27,10 @@ function Slider({ onData }) {
           }}
         />
       </form>
-      <p>
+      {/* <p>
         <strong>Current Value {' '}</strong>
           {volume}
-      </p>
+      </p> */}
     </>
   );
 }

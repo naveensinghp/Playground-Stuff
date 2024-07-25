@@ -33,10 +33,10 @@ export default function Test() {
 }
 
 const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
-  margin : 5px; /* Adjust spacing as needed */
+  margin : 5px; 
   &:checked {
-    border-color: #007bff; /* Example border color */
-    background-color: red; /* Example background color */
+    border-color: #007bff; 
+    background-color: red; 
     border-style: dotted;
   }
 `;

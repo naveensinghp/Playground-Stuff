@@ -2,7 +2,7 @@ import React,{ useState }  from 'react';
 import styles from '../../../styles/Home.module.css';
 import { range } from '../../utils';
 import Spacer from '../Spacer/Spacer';
-import { X,Plus } from 'react-feather';
+import { X,Plus,Copy } from 'react-feather';
 import useBoop from '../../../hooks/use-boop';
 import Slider from '../Slider/Slider';
 import styled from "styled-components";
@@ -24,7 +24,10 @@ const GradientGen = () => {
   const visibleColors = colors.slice(0,numOfVisibleColors)
   const colorStops = visibleColors.join(', ');
   const backgroundImage = `linear-gradient(${colorStops})`
-
+  const [childData, setChildData] = useState(''); // Slider Purpose
+  const handleChildData = (data) => {
+    setChildData(data);
+  };
   
   function addColor(){
     if(visibleColors.length >=5){
@@ -51,6 +54,7 @@ const GradientGen = () => {
     <>
       <button onClick={addColor}>Add Color</button>
       <button onClick={removeColor}>Remove Color</button>
+      <Spacer size={20} />
       <MainWrapper>
         <ColorModes>
           <h3>Colors :  </h3> 
@@ -74,35 +78,55 @@ const GradientGen = () => {
             );
            })}
           </form>
+          <Slider onData={handleChildData} />
+          <Spacer size={22} />
           <h3>Colors Modes :  </h3> 
+          <Spacer size={22} />
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            {/* <RadioBtnWrapper>
-              <CustomRadioLabel>
-              <RadioButton 
-                type='radio'
-              />HSL
-              <CustomRadioMark />
-              </CustomRadioLabel>
-            </RadioBtnWrapper> */}
             <Spacer size={12} />
             <label>
-          <RadioBtnWrapper>
-            <CustomRadioLabel>
-            <CustomRadioInput name="radioGroup" value="option1" />
-              HSL
-            </CustomRadioLabel>
-          </RadioBtnWrapper>
-      </label>
-           
-           {/* <Radiobutton>ff</Radiobutton> */}
-          {/* <Button>Nes</Button>
-          <Button>Nes</Button>
-          <Button>Nes</Button>
-          <Button>Nes</Button> */}
+              <RadioBtnWrapper>
+                <CustomRadioLabel>
+                <CustomRadioInput name="radioGroup" value="option1" />
+                  LRGB
+                </CustomRadioLabel>
+              </RadioBtnWrapper>
+            </label>
+            <Spacer size={12} />
+            <label>
+              <RadioBtnWrapper>
+                <CustomRadioLabel>
+                <CustomRadioInput name="radioGroup" value="option2" />
+                  HSL
+                </CustomRadioLabel>
+              </RadioBtnWrapper>
+            </label>
           </div>
-          
+          <Spacer size={20} />
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <Spacer size={12} />
+            <label>
+              <RadioBtnWrapper>
+                <CustomRadioLabel>
+                <CustomRadioInput name="radioGroup" value="option1" />
+                  HSV
+                </CustomRadioLabel>
+              </RadioBtnWrapper>
+            </label>
+            <Spacer size={12} />
+            <label>
+              <RadioBtnWrapper>
+                <CustomRadioLabel>
+                <CustomRadioInput name="radioGroup" value="option2" />
+                  LAB
+                </CustomRadioLabel>
+              </RadioBtnWrapper>
+            </label>
+          </div>
+          <Spacer size={22} />
         </ColorModes>
-        <Csscode />
+        
+        <Csscode style={{ background: 'white' }} />
       </MainWrapper>
       <div className={styles.grr}>
           <h3>Your Gradient : </h3>
@@ -228,7 +252,6 @@ const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
 
 const CustomRadioLabel = styled.label`
   position: relative;
-  padding-left: 30px;
   cursor: pointer;
   line-height: 1.5; 
   &:input{
@@ -239,13 +262,12 @@ const CustomRadioLabel = styled.label`
 
 
 const RadioBtnWrapper = styled.div`
-  background: #32E0C4;
-  color: #fff;
+  background: #fff;
+  color: black;
   padding: 10px;
   width: 200px;
   border-radius: 8px;
  
-
 `
 
 const RadioButton = styled.input`
