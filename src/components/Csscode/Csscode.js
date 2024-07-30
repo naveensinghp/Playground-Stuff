@@ -1,13 +1,13 @@
 import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { Copy } from 'react-feather';
 import styled from 'styled-components';
 
 const Csscode = ({code}) => {
   const codeString = `background-image: linear-gradient(
-    45deg dd,
-    hsl(240deg 50% 81%) 0%,
+    45deg,
+    hsl(240deg 50% 81%) ${code}%,
     hsl(273deg 43% 80%) 11%,
     hsl(311deg 41% 81%) 22%,
     hsl(335deg 62% 84%) 33%,
@@ -22,7 +22,7 @@ const Csscode = ({code}) => {
   return <>
   <Wrapper>
     <Copy />
-    <SyntaxHighlighter language="css" style={materialDark}>
+    <SyntaxHighlighter language="css" style={atomDark}>
       {codeString}
     </SyntaxHighlighter>
   </Wrapper>
