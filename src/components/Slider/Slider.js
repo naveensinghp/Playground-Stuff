@@ -8,25 +8,25 @@ function Slider({ onData }) {
   const [volume,setVolume] = React.useState(50);
   return (
     <>
-
       <form
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
-       >
-        <label htmlFor="volume-slider">Precision </label>
-        <Spacer size={16} />
-        <Inputwrapper 
-          type="range"
-          min={0}
-          max={100}
-          value={volume}
-          onChange={ event => {
-            onData(event.target.value);
-            setVolume(event.target.value)
+          onSubmit={(event) => {
+            event.preventDefault();
           }}
-        />
-      </form>
+        >
+          <label htmlFor="volume-slider">Precision </label>
+          {volume}
+          <Spacer size={16} />
+          <Inputwrapper 
+            type="range"
+            min={0}
+            max={100}
+            value={volume}
+            onChange={ event => {
+              onData(event.target.value);
+              setVolume(event.target.value)
+            }}
+          />
+        </form>
       {/* <p>
         <strong>Current Value {' '}</strong>
           {volume}
@@ -37,7 +37,10 @@ function Slider({ onData }) {
 
 export default Slider;
 
-
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
+`
 
 const Inputwrapper = styled.input`
   --handle-size: 20px;

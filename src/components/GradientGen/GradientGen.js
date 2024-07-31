@@ -126,7 +126,7 @@ const GradientGen = () => {
           <Spacer size={22} />
         </ColorModes>
         
-        <Csscode style={{ background: 'white' }} />
+        <Csscode style={{ background: 'white' }} code={childData} />
       </MainWrapper>
       <div className={styles.grr}>
           <h3>Your Gradient : </h3>
