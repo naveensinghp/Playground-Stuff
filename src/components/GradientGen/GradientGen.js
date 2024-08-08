@@ -240,12 +240,6 @@ const CustomRadioMarkSelected = styled(CustomRadioMark)`
 `;
 
 const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
-  /* Your custom CSS goes here */
-  /* Example styles: */
-  /* &:focus{
-    border: 2px solid red;
-    background-color: red;
-  } */
   margin-right: 5px; /* Adjust spacing as needed */
   &:checked {
     /* Style for checked state */
