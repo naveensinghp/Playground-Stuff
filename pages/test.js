@@ -5,6 +5,7 @@ import Slider from '../src/components/Slider/Slider';
 import { useState } from 'react';
 import React from 'react';
 import styled from "styled-components";
+import { range } from '../src/utils';
 
 
 export default function Test() {
@@ -21,16 +22,28 @@ export default function Test() {
            <Slider onData={handleChildData} />
            <Csscode code={codeString} /> 
            <GlobalStyles /> */}
-        <RadioBtnWrapper>
+        {/* <RadioBtnWrapper>
             <CustomRadioLabel>
                 <CustomRadioInput name="radioGroup" value="option1" />
                 HSL
                 </CustomRadioLabel>
-          </RadioBtnWrapper>
-                
+          </RadioBtnWrapper> */}
+           <Grid>
+            {range(31).map((num) => (
+              <h1>{num}</h1>
+            ))}
+            </Grid>
         </>
     );
 }
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  outline: solid;
+  border: 2px solid;
+  /* grid-template-rows: repeat(2,1fr); */
+`;
 
 const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
   margin : 5px; 
