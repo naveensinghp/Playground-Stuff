@@ -42,7 +42,6 @@ const Grid = styled.div`
   grid-template-columns: repeat(7,1fr);
   outline: solid;
   border: 2px solid;
-  /* grid-template-rows: repeat(2,1fr); */
 `;
 
 const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
