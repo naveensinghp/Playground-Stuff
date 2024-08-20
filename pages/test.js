@@ -5,7 +5,7 @@ import Slider from '../src/components/Slider/Slider';
 import { useState } from 'react';
 import React from 'react';
 import styled from "styled-components";
-import { range } from '../src/utils';
+import { alphabets, range, seatNumber } from '../src/utils';
 
 
 export default function Test() {
@@ -18,6 +18,7 @@ export default function Test() {
       };
     return(
         <>
+        
             {/* {'Test'}-{childData ? childData : undefined}
            <Slider onData={handleChildData} />
            <Csscode code={codeString} /> 
@@ -28,44 +29,83 @@ export default function Test() {
                 HSL
                 </CustomRadioLabel>
           </RadioBtnWrapper> */}
-           <Grid>
-            {range(31).map((num) => (
-              <h1>{num}</h1>
-            ))}
-            </Grid>
+          {/* {range(10).map((num) => (
+             <SeatNums>{num}</SeatNums>
+            ))} */}
+           {/* <Grid>
+            
+
+              {range(10).map((num) => (
+                <div>
+                    naveen
+                </div>
+              ))} 
+           
+            </Grid> */}
+              {/* {seatNumber.map((data) => (
+                <div style={{
+                  display: 'flex'
+                }}>
+                    {data.seat}
+                </div>
+              ))}  */}
+              <div style={{
+                  display: 'flex',
+                  flexDirection: 'row'
+                }}>
+                <div style={{
+                  background: 'hotpink',
+                  gap: '20px',
+                  display: 'grid'
+                }}>
+                  <div>A</div> 
+                  <div>B</div> 
+                  <div>C</div> 
+                </div>
+                
+                {range(10).map((num) => (
+                <div style={{ 
+                  paddingLeft: '20px'
+                }}>
+                    <SeatNums>{num}</SeatNums>
+                </div>
+                ))} 
+                
+              </div>
         </>
     );
 }
 
+function Test2(){
+  return <>
+    
+  </>;
+}
+
+const SeatNums = styled.button`
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    /* &:hover{
+        background-color: #ffcf14;
+        translate: 0px -16px;
+        transition: 200ms linear 50ms;
+    } */
+`;
+
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(7,1fr);
-  outline: solid;
-  border: 2px solid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
 `;
 
-const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
-  margin : 5px; 
-  &:checked {
-    border-color: #007bff; 
-    background-color: red; 
-    border-style: dotted;
-  }
-`;
-
-
-const CustomRadioLabel = styled.label`
-  cursor: pointer;
-  line-height: 1.5; 
-`;
-
-const RadioBtnWrapper = styled.div`
-  background: #32E0C4;
-  color: #fff;
-  padding: 10px;
-  width: 200px;
-  border-radius: 8px; 
-`
 
 
 
