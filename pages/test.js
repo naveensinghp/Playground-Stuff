@@ -6,9 +6,12 @@ import { useState } from 'react';
 import React from 'react';
 import styled from "styled-components";
 import { alphabets, range, seatNumber } from '../src/utils';
+import Spacer from '../src/components/Spacer/Spacer';
+import useToggle from '../hooks/use-toggle';
 
 
 export default function Test() {
+    const [isSeatClicked, setSeatClick] = useToggle();
     const [childData, setChildData] = useState('');
     const [count,setCount] = useState(0);
     const deferredCount = React.useDeferredValue(count);
@@ -49,6 +52,15 @@ export default function Test() {
                     {data.seat}
                 </div>
               ))}  */}
+              <div>
+                  <SeatNums 
+                    background={getColor}
+                    onClick={setSeatClick}
+                  >63
+                  </SeatNums>
+              </div>
+              <Spacer size={22} />
+
               <div style={{
                   display: 'flex',
                   flexDirection: 'row'
@@ -56,36 +68,34 @@ export default function Test() {
                 <div style={{
                   background: 'hotpink',
                   gap: '20px',
-                  display: 'grid'
+                  display: 'grid',
+                  placeContent: 'center'
                 }}>
                   <div>A</div> 
-                  <div>B</div> 
-                  <div>C</div> 
+                  
                 </div>
                 
                 {range(10).map((num) => (
                 <div style={{ 
-                  paddingLeft: '20px'
+                  paddingLeft: '2rem'
                 }}>
-                    <SeatNums>{num}</SeatNums>
+                    <SeatNums >{num}</SeatNums>
                 </div>
                 ))} 
                 
               </div>
         </>
     );
+  function getColor() {
+      return isSeatClicked ? '#ffcb05' : 'white';
+  };
 }
 
-function Test2(){
-  return <>
-    
-  </>;
-}
 
 const SeatNums = styled.button`
     width: 35px;
     height: 35px;
-    background-color: white;
+    background-color: ${props => props.background};
     border: 2px solid black;
     border-radius: 4px;
     cursor: pointer;
@@ -94,11 +104,11 @@ const SeatNums = styled.button`
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    /* &:hover{
+     &:hover{
         background-color: #ffcf14;
-        translate: 0px -16px;
-        transition: 200ms linear 50ms;
-    } */
+        /* translate: 0px -16px;
+        transition: 200ms linear 50ms; */
+    } 
 `;
 
 const Grid = styled.div`
