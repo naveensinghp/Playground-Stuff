@@ -5,18 +5,20 @@ import Spacer from '../src/components/Spacer/Spacer'
 import Slider from '../src/components/Slider/Slider'
 import React from 'react';
 import App from '../src/components/App/App'
+import Header from '../src/components/Header/Header';
 
 
 export default function Home() {
   return (
     <div className={styles.maincontainer}>
       <Head>
-        <title>Unguided Project . NaveenSingh </title>
+        <title>Unguided Project • NaveenSingh </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <main>
           <Spacer size={60} />
-          <h6 className={styles.title}>Gradient Generator</h6>
+          <Header />
+            <h6 className={styles.title}>Gradient Generator</h6>
           <App />
         </main> 
     </div>

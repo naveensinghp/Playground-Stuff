@@ -5,7 +5,9 @@ import { range, seatNumber } from "../src/utils";
 
 export default function BookSeat() {
     const [activeIndex, setActiveIndex] = useState(null);
-    const  handleClick = (index) => {
+    const  handleClick = (seatrow,seatnumber, index) => {
+        let seatSelected = seatrow + seatnumber;
+        console.log('seat',seatSelected);
         setActiveIndex(index);
     }
     return(
@@ -13,14 +15,14 @@ export default function BookSeat() {
             <Wrapper>
             {seatNumber.map((data) => (
                 <Wrapperout
-                 key={data.id}
                 >
                 {data.seatno.map((num,index) => (
-                <SeatNums 
-                    variant={num}
-                    active={index === activeIndex}
-                    onClick={() => handleClick(index)}>{num}
-                </SeatNums>
+                    <SeatNums 
+                        key={index}
+                        variant={num}
+                        active={index === activeIndex}
+                        onClick={() => handleClick(data.seat,num,index)}>{num}
+                    </SeatNums>
                 ))}    
                 </Wrapperout>
             ))}
@@ -41,8 +43,9 @@ const Wrapper = styled.div`
 `;
 
 const SeatNums = styled.button`
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
     background-color: ${props => props.active ? '#ffcb05' : 'white'}; 
     border: 1px solid ${props => props.active ? '#ffcb05' : '#7a7a7a'};
     visibility: ${props => {
