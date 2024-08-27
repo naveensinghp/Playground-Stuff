@@ -13,34 +13,36 @@ export default function BookSeat() {
     return(
         <>
             <Wrapper>
-            {seatNumber.map((data) => (
-                <Wrapperout
-                >
-                {data.seatno.map((num,index) => (
-                    <SeatNums 
-                        key={index}
-                        variant={num}
-                        active={index === activeIndex}
-                        onClick={() => handleClick(data.seat,num,index)}>{num}
-                    </SeatNums>
-                ))}    
-                </Wrapperout>
-            ))}
+                {seatNumber.map((data) => (
+                    <Wrapperout>
+                        {data.seatno.map((num,index) => (
+                            <SeatNums 
+                                key={index}
+                                variant={num}
+                                active={index === activeIndex}
+                                onClick={() => handleClick(data.seat,num,index)}>{num}
+                            </SeatNums>
+                        ))}    
+                    </Wrapperout>
+                ))}
             </Wrapper>
         </>
     );
 }
 
 
-const Wrapperout = styled.div`
-    display: flex;
+const Wrapper = styled.section`
+    display: grid;
     gap: 16px;
-`
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: row;
+    place-content: center;
+    height: calc(100vh - 16px);
 `;
+
+const Wrapperout = styled.div`
+    display: grid;
+    grid-auto-flow: column;
+    gap: 20px;
+`
 
 const SeatNums = styled.button`
     width: 30px;
