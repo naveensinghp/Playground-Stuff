@@ -20,7 +20,7 @@ export default function BookSeat() {
                                 key={index}
                                 variant={num}
                                 active={index === activeIndex}
-                                onClick={() => handleClick(data.seat,num,index)}>{num}
+                                onClick={() => handleClick(data.seat,num,index)}>{index}
                             </SeatNums>
                         ))}    
                     </Wrapperout>
