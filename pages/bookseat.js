@@ -1,28 +1,43 @@
 import styled from "styled-components";
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { range, seatNumber } from "../src/utils";
+import GlobalStyles from "../src/components/GlobalStyles/GlobalStyles";
 
 
 export default function BookSeat() {
+    const id = React.useId();
+    //const uniquePlanId = `${id}-${plan.id}`;
     const [activeIndex, setActiveIndex] = useState(null);
-    const  handleClick = (seatrow,seatnumber, index) => {
-        let seatSelected = seatrow + seatnumber;
-        console.log('seat',seatSelected);
+    const  handleClick = (index) => {
+        // let seatSelected = seatrow + seatnumber;
+        // console.log('seat',seatSelected);
         setActiveIndex(index);
     }
     return(
         <>
+            {/* <GlobalStyles /> */}
             <Wrapper>
+                <h1>Budget</h1>
                 {seatNumber.map((data) => (
                     <Wrapperout>
+                        <h1>{data.seat}</h1>
                         {data.seatno.map((num,index) => (
-                            <SeatNums 
-                                key={index}
-                                variant={num}
-                                active={index === activeIndex}
-                                onClick={() => handleClick(data.seat,num,index)}>{index}
-                            </SeatNums>
+                        
+                          <SeatNums 
+                            key={id} 
+                            variant={num}
+                            active={index === activeIndex}
+                            onClick={() => handleClick(data.seat,num,index)}>{index}
+                        </SeatNums>
                         ))}    
+                         {/* {data.seatno.map((data,index) => (
+                            console.log('ff',`${index}-${data.status}`),
+                          <SeatNums
+                          active={index === activeIndex}
+                          onClick={() => handleClick(index)}>
+                            {data.number}
+                          </SeatNums>
+                        ))} */}
                     </Wrapperout>
                 ))}
             </Wrapper>
@@ -50,13 +65,13 @@ const SeatNums = styled.button`
     font-size: 12px;
     background-color: ${props => props.active ? '#ffcb05' : 'white'}; 
     border: 1px solid ${props => props.active ? '#ffcb05' : '#7a7a7a'};
-    visibility: ${props => {
+    /* visibility: ${props => {
     if (props.variant.includes('x')) {
       return 'hidden';
     }else {
         return 'visible'; 
     } 
-    }};
+    }}; */
     border-radius: 4px;
     cursor: pointer;
     color: black;
