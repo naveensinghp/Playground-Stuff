@@ -1,10 +1,14 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 
 export default function Test() {
+  const [isEnabled, setIsEnabled] = React.useState(true);
     return(
         <>
-          <h1>Test</h1>
+          <div>
+             <button onClick={() => setIsEnabled(!isEnabled)}>Toggle - {isEnabled}</button>
+          </div>
         </>
     );
 }
