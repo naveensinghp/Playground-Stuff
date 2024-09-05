@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from 'react';
-import { range, seatNumber } from "../src/utils";
+import { range, seatNumbe_two, seatNumber } from "../src/utils";
 import GlobalStyles from "../src/components/GlobalStyles/GlobalStyles";
 
 
@@ -34,7 +34,6 @@ export default function BookSeat() {
                         </Wrapperout>
                     );
                   })}
-                  
             </Wrapper>
         </>
     );
