@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { range, seatNumbe_two, seatNumber } from "../src/utils";
 import GlobalStyles from "../src/components/GlobalStyles/GlobalStyles";
 
@@ -8,28 +8,48 @@ export default function BookSeat() {
     const id = React.useId();
     //const uniquePlanId = `${id}-${plan.id}`;
     const [activeIndex, setActiveIndex] = useState(null);
-    const  handleClick = (index) => {
+    const [selectedSeat, setClickedSeat] = useState(null);
+    
+    const  handleClick = (seatno,index) => {
+        setClickedSeat(seatno)
         setActiveIndex(index);
+        console.log('Clicked',seatno)
     }
+   
     return(
         <>
             {/* <GlobalStyles /> */}
             <Wrapper>
-                <h1>Budget</h1>
+                <h1>Selected Seat - {selectedSeat}</h1>
                   {seatNumber.map((data) => {
-                    const uniquePlanId = `${id}-${data.id}`;
+                    const uniquePlanId = `${data.seat}-${data.id}`;
+                    console.log('key ',uniquePlanId);
                     return(
                         <Wrapperout
                             key={uniquePlanId}
                         >
                             <h1>{data.seat}</h1>
-                            {data.seatno.map((num,index) => (
+                            {data.seatno.map((seatno,index)=> {
+                                const rowindex = `${data.seat}-${index}`
+                                const clickedSeat = `${data.seat}${''}${seatno}`
+                                return(
+                                    // <h1>{rowindex}</h1>
+                                    <SeatNums 
+                                        key={rowindex}
+                                        variant={seatno}
+                                        active={rowindex === activeIndex}
+                                        onClick={() => handleClick(clickedSeat,rowindex)}
+                                    >{seatno}</SeatNums>
+                                )
+                            })}
+                            {/* {data.seatno.map((num,index) => (
+                            
                                 <SeatNums 
                                     variant={num}
                                     active={index === activeIndex}
-                                    onClick={() => handleClick(index)}> {num}
+                                    onClick={() => handleClick(index)}> {num}-{index}
                                 </SeatNums>
-                            ))} 
+                            ))}  */}
                               <h1>{data.seat}</h1>
                         </Wrapperout>
                     );
