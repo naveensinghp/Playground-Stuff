@@ -2,25 +2,35 @@ import styled from "styled-components";
 import React, { useEffect, useState } from 'react';
 import { range, seatNumbe_two, seatNumber } from "../src/utils";
 import GlobalStyles from "../src/components/GlobalStyles/GlobalStyles";
-
+import Spacer from "../src/components/Spacer";
 
 export default function BookSeat() {
-    const id = React.useId();
-    //const uniquePlanId = `${id}-${plan.id}`;
+    // const id = React.useId();
+
+    const [colors, setColors] = React.useState([
+        'A1',
+        'A2',
+      ]);
+      
     const [activeIndex, setActiveIndex] = useState(null);
     const [selectedSeat, setClickedSeat] = useState(null);
+    const [isSeatBooked,setSeatBooked] = useState(false);
     
     const  handleClick = (seatno,index) => {
         setClickedSeat(seatno)
         setActiveIndex(index);
-        console.log('Clicked',seatno)
+        setSeatBooked(true)
+    }
+
+   const  bookticket = () => {
+        alert(isSeatBooked);
     }
    
     return(
         <>
             {/* <GlobalStyles /> */}
             <Wrapper>
-                <h1>Selected Seat - {selectedSeat}</h1>
+                <h1>Gradient - {selectedSeat}</h1>
                   {seatNumber.map((data) => {
                     const uniquePlanId = `${data.seat}-${data.id}`;
                     console.log('key ',uniquePlanId);
@@ -33,44 +43,49 @@ export default function BookSeat() {
                                 const rowindex = `${data.seat}-${index}`
                                 const clickedSeat = `${data.seat}${''}${seatno}`
                                 return(
-                                    // <h1>{rowindex}</h1>
                                     <SeatNums 
                                         key={rowindex}
                                         variant={seatno}
                                         active={rowindex === activeIndex}
                                         onClick={() => handleClick(clickedSeat,rowindex)}
-                                    >{seatno}</SeatNums>
+                                    >
+                                        {seatno}
+                                    </SeatNums>
                                 )
                             })}
-                            {/* {data.seatno.map((num,index) => (
-                            
-                                <SeatNums 
-                                    variant={num}
-                                    active={index === activeIndex}
-                                    onClick={() => handleClick(index)}> {num}-{index}
-                                </SeatNums>
-                            ))}  */}
-                              <h1>{data.seat}</h1>
+                            <h1>{data.seat}</h1>
                         </Wrapperout>
                     );
                   })}
+                  <Spacer size={50} /> 
+                  <BookTicketBtn onClick={() => bookticket()}>Book Ticket</BookTicketBtn>
             </Wrapper>
         </>
     );
 }
 
 
+const BookTicketBtn = styled.button`
+ background-color: #ffcb05;
+ color: black;
+ height: 50px;
+ border: none;
+ border-radius: 12px;
+`;
+
 const Wrapper = styled.section`
     display: grid;
-    gap: 16px;
     place-content: center;
-    height: calc(100vh - 16px);
+    /* height: calc(50vh - 16px); */
+    font-family: "Comfortaa", sans-serif;
 `;
 
 const Wrapperout = styled.div`
     display: grid;
     grid-auto-flow: column;
     gap: 20px;
+    align-items: center;
+    height: 50px;
 `
 
 const SeatNums = styled.button`
