@@ -7,19 +7,29 @@ import Spacer from "../src/components/Spacer";
 export default function BookSeat() {
     // const id = React.useId();
 
-    const [colors, setColors] = React.useState([
-        'A1',
-        'A2',
-      ]);
+    // const [colors, setColors] = React.useState([
+    //     'A1',
+    //     'A2',
+    //   ]);
       
     const [activeIndex, setActiveIndex] = useState(null);
     const [selectedSeat, setClickedSeat] = useState(null);
     const [isSeatBooked,setSeatBooked] = useState(false);
     
     const  handleClick = (seatno,index) => {
+        if(selectedSeat == seatno){
+            // alert('same Seat Clicked');
+            setSeatBooked('');
+            return 
+        }
+        // const nextSeats = [...seatno]
+        //  nextSeats.push(seatno);
+        console.log('next',seatno);
         setClickedSeat(seatno)
         setActiveIndex(index);
         setSeatBooked(true)
+        console.log("ROw Index",index);
+                                console.log("Active Index",activeIndex)
     }
 
    const  bookticket = () => {
@@ -33,7 +43,6 @@ export default function BookSeat() {
                 <h1>Gradient - {selectedSeat}</h1>
                   {seatNumber.map((data) => {
                     const uniquePlanId = `${data.seat}-${data.id}`;
-                    console.log('key ',uniquePlanId);
                     return(
                         <Wrapperout
                             key={uniquePlanId}
