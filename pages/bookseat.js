@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { range, seatNumbe_two, seatNumber } from "../src/utils";
 import GlobalStyles from "../src/components/GlobalStyles/GlobalStyles";
 import Spacer from "../src/components/Spacer";
+import useToggle from "../hooks/use-toggle";
+
 
 export default function BookSeat() {
     // const id = React.useId();
@@ -15,6 +17,7 @@ export default function BookSeat() {
     const [activeIndex, setActiveIndex] = useState(null);
     const [selectedSeat, setClickedSeat] = useState(null);
     const [isSeatBooked,setSeatBooked] = useState(false);
+    const [isOn, toggleIsOn] = useToggle();
     
     const  handleClick = (seatno,index) => {
         if(selectedSeat == seatno){
@@ -38,9 +41,10 @@ export default function BookSeat() {
    
     return(
         <>
+        {isOn ? 'The light is on!' : 'Hey who turned off the lights'}
             {/* <GlobalStyles /> */}
             <Wrapper>
-                <h1>Gradient - {selectedSeat}</h1>
+                <h1>Gradient - {selectedSeat} - {isOn}</h1>
                   {seatNumber.map((data) => {
                     const uniquePlanId = `${data.seat}-${data.id}`;
                     return(
@@ -67,6 +71,9 @@ export default function BookSeat() {
                     );
                   })}
                   <Spacer size={50} /> 
+                  <button onClick={toggleIsOn}>
+        Press me
+      </button>
                   <BookTicketBtn onClick={() => bookticket()}>Book Ticket</BookTicketBtn>
             </Wrapper>
         </>
@@ -76,6 +83,7 @@ export default function BookSeat() {
 
 const BookTicketBtn = styled.button`
  background-color: #ffcb05;
+ cursor: pointer;
  color: black;
  height: 50px;
  border: none;
