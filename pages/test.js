@@ -1,23 +1,47 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from "styled-components";
+import { range } from '../src/utils';
 
 
 export default function Test() {
   const [isEnabled, setIsEnabled] = React.useState(true);
     return(
         <>
-          {/* <div>
-             <button onClick={() => setIsEnabled(!isEnabled)}>Toggle - {isEnabled}</button>
-          </div> */}
-          <Parent>
+          <CheckPartent>
+             {range(32).map((num) =>( 
+              <CheckChildTest>
+                {num}
+              </CheckChildTest>
+          ))}
+          </CheckPartent>
+          {/* <Parent>
             <Child>1</Child>
             <Child>2</Child>
-          </Parent>
+          </Parent> */}
         </>
     );
 }
 
+const CheckPartent = styled.div`
+  width: 340px;
+  padding: 4px;
+  border: 1px solid hsl(210deg 10% 40%);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  grid-template-rows: repeat(7,1fr);
+  grid-template-areas: 'sidebar header';
+`;
+
+const CheckChildTest = styled.div`
+  grid-row: 3;
+  
+  background: black;
+  padding: 10px;
+  color: white;
+  border: 2px solid #75808a;
+`;
 
 const Child = styled.div`
   display: grid;
