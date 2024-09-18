@@ -7,7 +7,6 @@ import useToggle from "../hooks/use-toggle";
 
 
 export default function BookSeat() {
-    // const id = React.useId(); 
     const [activeIndex, setActiveIndex] = useState(null);
     const [previousIndex,setPreviousIndex] = useState(null);
     const [selectedSeat, setClickedSeat] = useState(null);
@@ -17,30 +16,17 @@ export default function BookSeat() {
     const [activeRows, setActiveRows] = useState([]);
     
     const  handleClick = (seatno,index) => {
-        // console.log('Seat No',seatno)
-        // setActiveIndex(index);
         console.log('Acive Index',activeIndex)
         setPreviousIndex(activeIndex);
         console.log('Previous Index',previousIndex);
-        // console.log('previousrow',activeIndex)
-        // const previousrow = [...activeIndex]
-        // previousrow.push(index)
-        // setActiveIndex(previousrow);
-        // console.log('After',previousrow)
-        // if(selectedSeat == seatno){
-        //     return 
-        // }
          setActiveIndex(index);
     }
 
    const toggleSeatRowActive = (rowId) => {
-
     setActiveIndex(prevActiveRows =>
-        prevActiveRows.includes(rowId)
-          ? prevActiveRows.filter(id => id !== rowId)
-          : [...prevActiveRows, rowId]
+       prevActiveRows.includes(rowId)  ? prevActiveRows.filter(id => id !== rowId) : [...prevActiveRows, rowId]
       );
-      console.log('fff',activeRows);
+      console.log('fff',rowId);
         // setActiveIndex(prow => prow.includes(rowindex) ? prow.filter(id => id !==rowindex)
         //  : [...prow,rowindex])
    }
@@ -48,62 +34,63 @@ export default function BookSeat() {
         alert(isSeatBooked);
     }
    
-    // return(
-    //     <>
-    //         {/* <GlobalStyles /> */}
-    //         <Wrapper>
-    //             <h1>Gradient - {selectedSeat} - {isOn}</h1>
-    //               {seatNumber.map((data) => {
-    //                 const uniquePlanId = `${data.seat}-${data.id}`;
-    //                 return(
-    //                     <Wrapperout
-    //                         key={uniquePlanId}
-    //                     >
-    //                         <h1>{data.seat}</h1>
-    //                         {data.seatno.map((seatno,index)=> {
-    //                             const rowindex = `${data.seat}-${index}`
-    //                             // console.log('rowindex',rowindex);
-    //                             const clickedSeat = `${data.seat}${''}${seatno}`
-    //                             let arr1 = [clickedSeat];
-    //                             let str = arr1.join(' ')
+    return(
+        <>
+            {/* <GlobalStyles /> */}
+            <Wrapper>
+                <h1>Gradient - {selectedSeat} - {isOn}</h1>
+                  {seatNumber.map((data) => {
+                    const uniquePlanId = `${data.seat}-${data.id}`;
+                    return(
+                        <Wrapperout
+                            key={uniquePlanId}
+                        >
+                            <h1>{data.seat}</h1>
+                            {data.seatno.map((seatno,index)=> {
+                                const rowindex = `${data.seat}-${index}`
+                                // console.log('rowindex',rowindex);
+                                const clickedSeat = `${data.seat}${''}${seatno}`
+                                let arr1 = [clickedSeat];
+                                let str = arr1.join(' ')
 
-    //                             // const prev = `${previousIndex}${''}${rowindex}`
-    //                             // let arr2 = [prev]
+                                // const prev = `${previousIndex}${''}${rowindex}`
+                                // let arr2 = [prev]
 
-    //                             // let prevs = arr2.join(' ')
-    //                             // const current =  `${previousIndex}${''}${activeIndex}`
-    //                             // let arr3 = [current]
+                                // let prevs = arr2.join(' ')
+                                // const current =  `${previousIndex}${''}${activeIndex}`
+                                // let arr3 = [current]
 
-    //                             // console.log('PREV',arr2);
-    //                             // console.log('CURR',arr3)
+                                // console.log('PREV',arr2);
+                                // console.log('CURR',arr3)
                                
-    //                             return(
-    //                                 <SeatNums 
-    //                                     key={rowindex}
-    //                                     variant={seatno}
-    //                                     // active={rowindex === activeIndex}
-    //                                     // onClick={() => handleClick(str,rowindex)}
-    //                                     // isActive={activeRows.includes(row.id)}
-    //                                     onClick={() => toggleSeatRowActive(rowindex)}
-    //                                 >
-    //                                     {index}
-    //                                 </SeatNums>
-    //                             )
-    //                         })}
-    //                         <h1>{data.seat}</h1>
-    //                     </Wrapperout>
-    //                 );
-    //               })}
-    //               <Spacer size={50} /> 
-    //               {/* <button onClick={toggleIsOn}>Press me</button>
-    //               {isOn ? 'The light is on!' : 'Hey who turned off the lights'} */}
-    //               <BookTicketBtn onClick={() => bookticket()}>Book Ticket</BookTicketBtn>
-    //         </Wrapper>
-    //     </>
-    // );
-    return (
-        <TableComponent />
+                                return(
+                                    <SeatNums 
+                                        key={rowindex}
+                                        variant={seatno}
+                                        // active={rowindex === activeIndex}
+                                        // onClick={() => handleClick(str,rowindex)}
+                                        // isActive={activeRows.includes(row.id)}
+                                        onClick={() => toggleSeatRowActive(index)}
+                                    >
+                                        {index}
+                                    </SeatNums>
+                                )
+                            })}
+                            <h1>{data.seat}</h1>
+                        </Wrapperout>
+                    );
+                  })}
+                  <Spacer size={50} /> 
+                  {/* <button onClick={toggleIsOn}>Press me</button>
+                  {isOn ? 'The light is on!' : 'Hey who turned off the lights'} */}
+                  <BookTicketBtn onClick={() => bookticket()}>Book Ticket</BookTicketBtn>
+                  <SeatNums  variant={'S'}><img src="/wheelchair.svg" alt="bookmymovielogo" width={20}/></SeatNums>
+            </Wrapper>
+        </>
     );
+    // return (
+    //     <TableComponent />
+    // );
 }
 
 const Table = styled.table`
