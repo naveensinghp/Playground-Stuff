@@ -32,21 +32,6 @@ export const alphabets = [
 ];
 
 
-export const seatNumbe_two = [
-  {
-    seatNumber: 'A1',
-    row: 'A',
-    section: 'VIP',
-    status: 'Booked',
-    bookingId: 'A1234',
-    customer: {
-      customerId: 'C001',
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      phone: '555-1234'
-  }
-  }
-]
 
 export const seatNumber = [
   {

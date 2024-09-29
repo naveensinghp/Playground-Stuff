@@ -24,7 +24,7 @@ export default function BookSeat() {
 
    const toggleSeatRowActive = (rowId) => {
     setActiveIndex(prevActiveRows =>
-       prevActiveRows.includes(rowId)  ? prevActiveRows.filter(id => id !== rowId) : [...prevActiveRows, rowId]
+      prevActiveRows &&  prevActiveRows.includes(rowId)  ? prevActiveRows.filter(id => id !== rowId) : [...prevActiveRows, rowId]
       );
       console.log('fff',rowId);
         // setActiveIndex(prow => prow.includes(rowindex) ? prow.filter(id => id !==rowindex)
@@ -48,21 +48,8 @@ export default function BookSeat() {
                             <h1>{data.seat}</h1>
                             {data.seatno.map((seatno,index)=> {
                                 const rowindex = `${data.seat}-${index}`
-                                // console.log('rowindex',rowindex);
                                 const clickedSeat = `${data.seat}${''}${seatno}`
                                 let arr1 = [clickedSeat];
-                                let str = arr1.join(' ')
-
-                                // const prev = `${previousIndex}${''}${rowindex}`
-                                // let arr2 = [prev]
-
-                                // let prevs = arr2.join(' ')
-                                // const current =  `${previousIndex}${''}${activeIndex}`
-                                // let arr3 = [current]
-
-                                // console.log('PREV',arr2);
-                                // console.log('CURR',arr3)
-                               
                                 return(
                                     <SeatNums 
                                         key={rowindex}
@@ -84,6 +71,8 @@ export default function BookSeat() {
                   {/* <button onClick={toggleIsOn}>Press me</button>
                   {isOn ? 'The light is on!' : 'Hey who turned off the lights'} */}
                   <BookTicketBtn onClick={() => bookticket()}>Book Ticket</BookTicketBtn>
+
+                  <TableComponent />
                   <SeatNums  variant={'S'}><img src="/wheelchair.svg" alt="bookmymovielogo" width={20}/></SeatNums>
             </Wrapper>
         </>
@@ -114,7 +103,6 @@ const TableCell = styled.td`
 const TableComponent = () => {
     const [activeRows, setActiveRows] = useState([]);
     const toggleRowActive = (rowId) => {
-        console.log('Row',rowId);
         setActiveRows(prevActiveRows =>
           prevActiveRows.includes(rowId)
             ? prevActiveRows.filter(id => id !== rowId)

@@ -2,23 +2,29 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from "styled-components";
 import { range } from '../src/utils';
-
+import useBoop from '../hooks/use-boop';
+import { animated } from 'react-spring';
+import { ArrowDown } from 'react-feather';
 
 export default function Test() {
   const [isEnabled, setIsEnabled] = React.useState(true);
+  const [style,trigger] = useBoop({y : 8})
     return(
         <>
-          <CheckPartent>
+        <button onMouseEnter={trigger}>
+          Show More
+          <animated.span style={style}>
+          <ArrowDown />  
+          </animated.span>
+          
+        </button>
+          {/* <CheckPartent>
              {range(32).map((num) =>( 
               <CheckChildTest>
                 {num}
               </CheckChildTest>
           ))}
-          </CheckPartent>
-          {/* <Parent>
-            <Child>1</Child>
-            <Child>2</Child>
-          </Parent> */}
+          </CheckPartent> */}
         </>
     );
 }
