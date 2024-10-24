@@ -8,27 +8,16 @@ import useToggle from "../hooks/use-toggle";
 
 export default function BookSeat() {
     const [activeIndex, setActiveIndex] = useState(null);
-    const [previousIndex,setPreviousIndex] = useState(null);
     const [selectedSeat, setClickedSeat] = useState(null);
     const [isSeatBooked,setSeatBooked] = useState(false);
-    const [isOn, toggleIsOn] = useToggle();
-
-    const [activeRows, setActiveRows] = useState([]);
     
-    const  handleClick = (seatno,index) => {
-        console.log('Acive Index',activeIndex)
-        setPreviousIndex(activeIndex);
-        console.log('Previous Index',previousIndex);
-         setActiveIndex(index);
-    }
+    
+    
 
    const toggleSeatRowActive = (rowId) => {
     setActiveIndex(prevActiveRows =>
       prevActiveRows &&  prevActiveRows.includes(rowId)  ? prevActiveRows.filter(id => id !== rowId) : [...prevActiveRows, rowId]
       );
-      console.log('fff',rowId);
-        // setActiveIndex(prow => prow.includes(rowindex) ? prow.filter(id => id !==rowindex)
-        //  : [...prow,rowindex])
    }
    const  bookticket = () => {
         alert(isSeatBooked);
@@ -38,7 +27,6 @@ export default function BookSeat() {
         <>
             {/* <GlobalStyles /> */}
             <Wrapper>
-                <h1>Gradient - {selectedSeat} - {isOn}</h1>
                   {seatNumber.map((data) => {
                     const uniquePlanId = `${data.seat}-${data.id}`;
                     return(
@@ -48,8 +36,6 @@ export default function BookSeat() {
                             <h1>{data.seat}</h1>
                             {data.seatno.map((seatno,index)=> {
                                 const rowindex = `${data.seat}-${index}`
-                                const clickedSeat = `${data.seat}${''}${seatno}`
-                                let arr1 = [clickedSeat];
                                 return(
                                     <SeatNums 
                                         key={rowindex}
@@ -59,7 +45,7 @@ export default function BookSeat() {
                                         // isActive={activeRows.includes(row.id)}
                                         onClick={() => toggleSeatRowActive(index)}
                                     >
-                                        {index}
+                                        {seatno}
                                     </SeatNums>
                                 )
                             })}
@@ -68,18 +54,16 @@ export default function BookSeat() {
                     );
                   })}
                   <Spacer size={50} /> 
-                  {/* <button onClick={toggleIsOn}>Press me</button>
-                  {isOn ? 'The light is on!' : 'Hey who turned off the lights'} */}
                   <BookTicketBtn onClick={() => bookticket()}>Book Ticket</BookTicketBtn>
-
+                  <Spacer size={10} /> 
                   <TableComponent />
-                  <SeatNums  variant={'S'}><img src="/wheelchair.svg" alt="bookmymovielogo" width={20}/></SeatNums>
+                  <SeatNums  variant={'S'}>
+                    <img src="/wheelchair.svg" alt="bookmymovielogo" width={20}/>
+                  </SeatNums>
             </Wrapper>
         </>
     );
-    // return (
-    //     <TableComponent />
-    // );
+
 }
 
 const Table = styled.table`
@@ -185,12 +169,3 @@ const SeatNums = styled.button`
         background-color: #ffcf14;
     } 
 `;
-
-const Seatbooked = styled(SeatNums)`
-  background-color: #e5e5e5;
-  color: #7a7a7a;
-  cursor: default;
-  &:hover{
-        background-color: #e5e5e5
-  }
-`
