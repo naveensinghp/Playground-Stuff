@@ -11,8 +11,6 @@ export default function BookSeat() {
     const [selectedSeat, setClickedSeat] = useState(null);
     const [isSeatBooked,setSeatBooked] = useState(false);
     
-    
-    
 
    const toggleSeatRowActive = (rowId) => {
     setActiveIndex(prevActiveRows =>
