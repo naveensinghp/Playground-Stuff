@@ -11,8 +11,46 @@ export default function Calc() {
         <HandAnimation>
           👋
         </HandAnimation>
+        <Svg
+          viewBox="0 0 300 300"
+         fill="none"          
+        >
+          <path 
+            d="
+              M 100,100
+              L 200,100
+              L 200,200
+              L 100,200
+              L 100,100
+            "
+            stroke="hotpink"
+            storke-width="5"
+          />
+          {/* <rect 
+            x="40"
+            y="15"
+            width="30"
+            height="65"
+            fill="hotpink"
+          />
+          <ellipse
+            cx="30" cy="60"
+            rx="20" ry="20"
+            fill="lightsalmon"
+          />
+          <polygon 
+            points="15,80 30,55 45,80"
+            fill="turquoise"
+          /> */}
+        </Svg>
     </>
 }
+
+const Svg = styled.svg`
+
+`
+
+
 
 const wave = keyframes`
   from {
