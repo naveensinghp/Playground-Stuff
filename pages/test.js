@@ -5,19 +5,23 @@ import { range } from '../src/utils';
 import useBoop from '../hooks/use-boop';
 import { animated } from 'react-spring';
 import { ArrowDown } from 'react-feather';
+import GlobalStyles from "../src/components/GlobalStyles/GlobalStyles"
 
 export default function Test() {
   const [isEnabled, setIsEnabled] = React.useState(true);
   const [style,trigger] = useBoop({y : 8})
     return(
         <>
-        <button onMouseEnter={trigger}>
+        <GlobalStyles />
+        {/* <button onMouseEnter={trigger}>
           Show More
           <animated.span style={style}>
           <ArrowDown />  
           </animated.span>
           
-        </button>
+        </button> */}
+        {/* <Backdrop /> */}
+        <ModalAnimation />
           {/* <CheckPartent>
              {range(32).map((num) =>( 
               <CheckChildTest>
@@ -28,6 +32,124 @@ export default function Test() {
         </>
     );
 }
+
+
+function ModalAnimation(){
+  const [isOpen,setIsOpen] = React.useState(false);
+  return(
+    <>
+      <button 
+          onClick={() => setIsOpen(!open)}
+        >
+        Toggle Modal
+      </button>
+      <Modal
+          title="Example Modal"
+          isOpen={isOpen}
+          handleDismiss={() => setIsOpen(false)}
+        >
+          Shall We Begin
+      </Modal>
+    </>
+  );
+}
+
+const Modal = ({title,isOpen,handleDismiss}) => {
+  const ENTER_DURATION = '500ms';
+  const EXIT_DURATION = '250ms';
+  const ENTER_EASE = 'ease-out';
+  const EXIT_EASE ='ease-in';
+
+  const transitionDuration = isOpen ? ENTER_DURATION : ENTER_DURATION;
+  const ease = isOpen ? ENTER_EASE : EXIT_EASE; 
+  // Close Modal on "Escape"
+  React.useEffect(() => {
+    function handleKeyDown(ev){
+      if(ev.key === 'Escape'){
+        handleDismiss();
+      }
+    }
+    window.addEventListener('keydown',handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown',handleKeyDown)
+    }
+  });
+
+  return (
+    <ModalWrapper 
+      style={{pointerEvents : isOpen }}
+      >
+      <ModalBackdrop>
+        <ModalContentWrapper>
+          <ModalContent>
+            <CloseButton>
+
+            </CloseButton>
+          </ModalContent>
+        </ModalContentWrapper>
+      </ModalBackdrop>
+    </ModalWrapper>
+  );
+}
+
+const ModalWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`
+
+const ModalBackdrop = styled.div`
+  
+`
+const ModalContentWrapper = styled.div`
+
+`
+
+const ModalContent = styled.div`
+
+`
+
+const CloseButton = styled.button`
+
+
+`
+
+function Backdrop(){
+  return (
+    <>
+      <div style={{display: 'flex',justifyContent:'center', }}>
+          <Catimg>
+            <img src="/cat.png" />
+          </Catimg>
+      </div>
+      <Btn>
+        Test
+      </Btn>
+    </>
+  );
+}
+
+const Btn = styled.div`
+  width: 200px;
+  height: 50px;
+  border-radius: 6px;
+  border: 2px solid;
+  will-change: transform;
+  text-align: center;
+  transition: transform 500ms;
+
+  &:hover{
+    transform : scale(1.1);
+    transition: transform 150ms;
+  }
+`
+
+const Catimg = styled.div`
+  filter: blur(14px);
+`
 
 const CheckPartent = styled.div`
   width: 340px;
