@@ -12,7 +12,7 @@ export default function Test() {
   const [style,trigger] = useBoop({y : 8})
     return(
         <>
-        {/* <GlobalStyles /> */}
+        <GlobalStyles />
         {/* <button onMouseEnter={trigger}>
           Show More
           <animated.span style={style}>
@@ -35,13 +35,14 @@ export default function Test() {
 
 
 function ModalAnimation(){
-  const [isOpen,setIsOpen] = React.useState(false);
-  return(
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
     <>
-      <button 
-          onClick={() => setIsOpen(!open)}
-        >
-        Toggle {isOpen}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        Toggle Modal
       </button>
       <Modal
         title="Example Modal"
@@ -51,7 +52,7 @@ function ModalAnimation(){
         Hello World
       </Modal>
     </>
-  );
+  )
 }
 
 /*
@@ -60,6 +61,7 @@ function ModalAnimation(){
   dirty implementation to teach the animation concept.
 */
 const Modal = ({ title, isOpen, handleDismiss }) => {
+ console.log('id',isOpen);
   const ENTER_DURATION = '500ms';
   const EXIT_DURATION = '250ms';
   const ENTER_EASE = 'ease-out';
@@ -209,6 +211,10 @@ function Backdrop(){
       </Btn>
     </>
   );
+}
+
+function BallonAnimation(){
+
 }
 
 const Btn = styled.div`
