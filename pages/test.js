@@ -21,7 +21,8 @@ export default function Test() {
           
         </button> */}
         {/* <Backdrop /> */}
-        <ModalAnimation />
+        {/* <ModalAnimation /> */}
+        <Ballon />
           {/* <CheckPartent>
              {range(32).map((num) =>( 
               <CheckChildTest>
@@ -37,7 +38,12 @@ export default function Test() {
 function Ballon(){
   return(
     <>
-      
+       <svg width="150" height="250" xmlns="http://www.w3.org/2000/svg">
+        {/* Balloon  */}
+        <ellipse cx="75" cy="75" rx="45" ry="60" fill="red" />
+         {/* Balloon Thread (curved)  */}
+        <path d="M 75 135 Q 50 180, 75 200 Q 100 220, 75 230" stroke="black" stroke-width="2" fill="transparent"/>
+      </svg> 
     </>
   );
 }
