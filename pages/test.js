@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from "styled-components";
-import { range } from '../src/utils';
+import { range, useMousePosition } from '../src/utils';
 import useBoop from '../hooks/use-boop';
 import { animated } from 'react-spring';
 import { ArrowDown } from 'react-feather';
@@ -22,7 +22,9 @@ export default function Test() {
         </button> */}
         {/* <Backdrop /> */}
         {/* <ModalAnimation /> */}
-        <Ballon />
+        {/* <Ballon /> */}
+        <Wishmical />
+        <GenerativeArt />
           {/* <CheckPartent>
              {range(32).map((num) =>( 
               <CheckChildTest>
@@ -34,6 +36,21 @@ export default function Test() {
     );
 }
 
+
+const GenerativeArt = ({numRows = 8, numCols = 16}) => {
+  const width = 400;
+  const height = 200;
+  const mousepos = useMousePosition
+  console.log(mousepos);
+}
+
+function Wishmical(){
+  return(
+    <>
+    <h1>Hello World</h1>
+    </>
+  );
+}
 
 function Ballon(){
   return(
