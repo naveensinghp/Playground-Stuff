@@ -61,3 +61,29 @@ export const seatNumber = [
       seatno: ['x','x','1','2','3','4','5','6','7','8','x','x','9','10','12','13','14']
   }
 ]
+
+
+//export const range = (start, end, step = 1) => {
+
+
+export const useMousePosition = () => {
+  const [
+    mousePosition,
+    setMousePosition
+  ] = React.useState({ x: null, y: null });
+
+  React.useEffect(() => {
+    const updateMousePosition = ev => {
+      setMousePosition({ x: ev.clientX, y: ev.clientY });
+    };
+
+    window.addEventListener('mousemove', updateMousePosition);
+
+    return () => {
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, []);
+
+  return mousePosition;
+};
+
