@@ -21,10 +21,10 @@ export default function Test() {
           
         </button> */}
         {/* <Backdrop /> */}
-        {/* <ModalAnimation /> */}
+        <ModalAnimation />
         {/* <Ballon /> */}
-        <Wishmical />
-        <GenerativeArt />
+        {/* <Wishmical />
+        <GenerativeArt /> */}
           {/* <CheckPartent>
              {range(32).map((num) =>( 
               <CheckChildTest>
@@ -147,13 +147,39 @@ const Modal = ({ title, isOpen, handleDismiss }) => {
             */}
             Close
           </CloseButton>
-          <Title>{title}</Title>
-          <p>This is a modal!</p>
+          {/* <Title>{title}</Title> */}
+          <div style={{display: 'flex',flexDirection: 'row'}}>
+          <SearchFilter 
+              placeholder='Search Brand'
+          >
+
+          </SearchFilter>
+          </div>
+         
+          {/* <hr /> */}
+          <SearchOption>
+            <div>A</div>
+          </SearchOption>
+          {/* <p>This is a modal!</p> */}
         </ModalContent>
       </ModalContentWrapper>
     </ModalWrapper>
   )
 }
+
+const SearchOption = styled.div`
+
+`
+
+const SearchFilter = styled.input`
+  margin: 0 20px 0 0;
+  padding: 5px;
+  height: 30px;
+  width: 170px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  text-transform: capitalize;
+`
 
 const Wrapper = styled.div`
   min-height: 100vh;
