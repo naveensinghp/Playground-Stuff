@@ -13,10 +13,10 @@ export default function Filter() {
         Toggle Modal
       </button>
         <Modal
-        title="Example Modal"
-        isOpen={isOpen}
-        handleDismiss={() => setIsOpen(false)}
-      >
+          title="Example Modal"
+          isOpen={isOpen}
+          handleDismiss={() => setIsOpen(false)}
+         >
         Hello World
       </Modal>
     </>
