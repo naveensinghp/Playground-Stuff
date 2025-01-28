@@ -6,6 +6,8 @@ import useBoop from '../hooks/use-boop';
 import { animated } from 'react-spring';
 import { ArrowDown } from 'react-feather';
 import GlobalStyles from "../src/components/GlobalStyles/GlobalStyles"
+import Spacer from '../src/components/Spacer';
+
 
 export default function Test() {
   const [isEnabled, setIsEnabled] = React.useState(true);
@@ -93,7 +95,7 @@ function ModalAnimation(){
   dirty implementation to teach the animation concept.
 */
 const Modal = ({ title, isOpen, handleDismiss }) => {
- console.log('id',isOpen);
+
   const ENTER_DURATION = '500ms';
   const EXIT_DURATION = '250ms';
   const ENTER_EASE = 'ease-out';
@@ -148,24 +150,59 @@ const Modal = ({ title, isOpen, handleDismiss }) => {
             Close
           </CloseButton>
           {/* <Title>{title}</Title> */}
-          <div style={{display: 'flex',flexDirection: 'row'}}>
-          <SearchFilter 
-              placeholder='Search Brand'
-          >
-
+          <div style={{display: 'flex',flexDirection: 'row',gap: '26px',flexWrap: 'wrap'}}>
+            <SearchFilter 
+                placeholder='Search Brands'
+            >
           </SearchFilter>
+          {alphabets.map((letters) =>( 
+              <SearchOption>
+                {letters}
+              </SearchOption>
+          ))}
           </div>
-         
-          {/* <hr /> */}
-          <SearchOption>
-            <div>A</div>
-          </SearchOption>
+          <Spacer size={20} /> 
+          <hr />
+          <div style={{display: 'flex',flexWrap: 'wrap',flexDirection: 'row'}}>
+          {brands.map((brand) =>( 
+            <>
+              <div style={{padding: '10px',display: 'flex',}}>
+                    <Input 
+                      type='checkbox'
+                      checked={true}
+                      onChange={event => {
+
+                      }}
+                    />
+                    <Label htmlFor="opt-in-checkbox">
+                    {brand}
+                  </Label>
+              </div>
+              </>
+             ))}
+              </div>
           {/* <p>This is a modal!</p> */}
         </ModalContent>
       </ModalContentWrapper>
     </ModalWrapper>
   )
 }
+
+const alphabets = ['A','B','C','D','E','F','G','H'];
+
+const brands = [
+  'Nike','Puma','TechnoSport','HRX','Performax','Jockey'
+]
+
+
+const Label = styled.label`
+  color: black;
+  font-size: 1rem;
+`
+
+const Input = styled.input`
+ 
+`
 
 const SearchOption = styled.div`
 
