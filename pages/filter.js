@@ -6,7 +6,6 @@ export default function Filter() {
     const [isOpen, setIsOpen] = React.useState(false);
     return(
     <>
-    <h1>DD</h1>
     <button
         onClick={() => setIsOpen(!isOpen)}
       >
