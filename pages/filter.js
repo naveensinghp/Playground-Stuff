@@ -2,10 +2,12 @@ import React from "react";
 import Modal from "../src/components/Modal";
 
 
+
 export default function Filter() {
     const [isOpen, setIsOpen] = React.useState(false);
     return(
     <>
+
     <button
         onClick={() => setIsOpen(!isOpen)}
       >
