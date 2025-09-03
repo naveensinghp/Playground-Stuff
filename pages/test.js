@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import styled from "styled-components";
+import styled, { keyframes } from 'styled-components';
 import { range, useMousePosition } from '../src/utils';
 import useBoop from '../hooks/use-boop';
 import { animated } from 'react-spring';
 import { ArrowDown } from 'react-feather';
 import GlobalStyles from "../src/components/GlobalStyles/GlobalStyles"
 import Spacer from '../src/components/Spacer';
+import MagicRainbowButton from '../src/components/MagicRainbowButton/MagicRainbowButton';
 
 
 export default function Test() {
@@ -15,15 +16,18 @@ export default function Test() {
     return(
         <>
         <GlobalStyles />
+        <Orbit />
+        {/* <MagicRainbowButton /> */}
+        {/* <Async /> */}
         {/* <button onMouseEnter={trigger}>
           Show More
           <animated.span style={style}>
           <ArrowDown />  
           </animated.span>
-          
+        
         </button> */}
         {/* <Backdrop /> */}
-        <ModalAnimation />
+        {/* <ModalAnimation /> */}
         {/* <Ballon /> */}
         {/* <Wishmical />
         <GenerativeArt /> */}
@@ -38,12 +42,128 @@ export default function Test() {
     );
 }
 
+const moveAndRotate = keyframes`
+  0% {
+    transform: translateX(0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translateX(200px) rotate(360deg) scale(1.5);
+  }
+`;
 
+const AnimatedBox = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: royalblue;
+  animation: ${moveAndRotate} 3s ease-in-out infinite alternate;
+`;
+
+const oribitRotate = keyframes`
+  from{
+    transform: rotate(0deg) translateX(80px);
+  }to{
+    transform: rotate(360deg) translateX(80px);
+  }
+
+`
+
+const Wrappers = styled.div`
+  position: relative;
+`;
+const Planet = styled.div`
+  width: 40px;
+  height: 40px;
+  background: blue;
+  border-radius: 50%;
+  position: absolute;
+  top: 80px;
+  left: 80px;
+
+`;
+const Moon = styled.div`
+  width: 20px;
+  height: 20px;
+  background: gray;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  
+  /* Only animate if motion is allowed */
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${oribitRotate} 6000ms linear infinite;
+    transform-origin: 100px 100px; /* Center of orbit inside wrapper */
+  }
+`;
+
+
+function Orbit(){
+  return<>
+    <Wrappers>
+      <Planet />
+        <Moon/>
+    </Wrappers>
+  </>
+}
+
+
+
+const Transform = () => {
+  return <>
+    <div style={{
+      width: '100px',
+      background: 'red',
+      height: '100px',
+      position: 'relative',
+      transform: 'translateX(0) rotate(0deg) scale(1)',
+      animation: 'moveRotateScale 3s ease-in-out infinite alternate',
+      
+      }}></div>
+  </>
+  
+}
 const GenerativeArt = ({numRows = 8, numCols = 16}) => {
   const width = 400;
   const height = 200;
   const mousepos = useMousePosition
   console.log(mousepos);
+}
+
+function Async(){
+  // const [count,setCount] = React.useState(0);
+  const [user,setUser] = React.useState({name : 'Naven'});
+  const [status,setStatus] = React.useState('ready');
+  const  [confirmationMessage,setConfirmationMessage] = React.useState();
+
+  if(!user){
+    return <p>{confirmationMessage}</p>
+  }
+
+  return(
+    <>
+      {/* <p>You clicked {count} times</p>
+      <button 
+        onClick={() => {
+          const nextCount = count + 1;
+          setCount(nextCount);
+          console.log(nextCount);
+        }}
+      >
+        Click me
+      </button> */}
+      <button
+        onClick={() => {
+          setUser(null);
+          setStatus('Initial');
+          setConfirmationMessage("You have been logged out.");
+
+        }}
+      >
+        Log out 
+      </button>
+    </>
+  );
 }
 
 function Wishmical(){
