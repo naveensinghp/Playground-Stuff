@@ -8,8 +8,8 @@ const GlobalStyles = createGlobalStyle`
    License: none (public domain)
 */
 * {
-	@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
-    font-family: "Comfortaa", sans-serif !important;
+	@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+    font-family: "Outfit", sans-serif;
             // CSS you want global. 
 }
 html, body, div, span, applet, object, iframe,
@@ -40,10 +40,11 @@ footer, header, hgroup, menu, nav, section {
 body {
   --bg: #101018;
   --color: #DBDEDF;
-	line-height: 1.5;
+  --font-family: "Outfit", sans-serif;
+  line-height: 1.5;
   background: var(--bg);
   color: var(--color);
-  font-family: "Comfortaa", sans-serif;
+  font-family: var(--font-family);
 }
 ol, ul {
 	list-style: none;

@@ -59,28 +59,29 @@ const GradientGen = () => {
         <ColorModes>
           <h3>Colors :  </h3> 
           <form style={{ display : 'flex', flexDirection: 'row'}}>
-          {visibleColors.map((color,index) => {
-            const colorId = `color-${index}`
-              return (
-                <Colorsection key={colorId}>
-                  <input 
-                    id={colorId}
-                    type="color"
-                    value={color}
-                    className={styles.addcolor}
-                    onChange={event => {
-                      const newcolor = [...colors]
-                      newcolor[index] = event.target.value;
-                      setColors(newcolor);   
-                    }}
-                  />
-                </Colorsection>
-            );
-           })}
+          {visibleColors.map((color, index) => {
+    const colorId = `color-${index}`;
+    return (
+      <Colorsection key={colorId}>
+        <input 
+          id={colorId}
+          type="color"
+          value={color}
+          className={styles.addcolor}
+          onChange={event => {
+            const newColors = [...colors];
+            newColors[index] = event.target.value;
+            setColors(newColors);   
+          }}
+        />
+      </Colorsection>
+    );
+  })}
+  <AddNew />
           </form>
           <Slider onData={handleChildData} />
           <Spacer size={22} />
-          <h3>Colors Modes :  </h3> 
+            <h3>Colors Modes :  </h3> 
           <Spacer size={22} />
           <div style={{ display: 'flex', flexDirection: 'row' }}>
             <Spacer size={12} />
@@ -227,6 +228,14 @@ const Colorsection = styled.div`
   
 `;
 
+const ColorAdd = styled.div`
+  width: 40px;
+  height: 100px;
+  background: hotpink;
+  border: none;
+  border-radius: 5px;
+`
+
 const CustomRadioMark = styled.div`
   position: absolute;
   left: 0;
@@ -305,7 +314,7 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 10px;
   &:hover{
-    border: 4px solid white;
+    border: 4px solid #454d54;
   }
 `;
 

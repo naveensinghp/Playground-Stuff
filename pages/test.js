@@ -16,7 +16,9 @@ export default function Test() {
     return(
         <>
         <GlobalStyles />
-        <Orbit />
+        <GenerativeArt />
+        {/* <Nifty /> */}
+        {/* <Orbit /> */}
         {/* <MagicRainbowButton /> */}
         {/* <Async /> */}
         {/* <button onMouseEnter={trigger}>
@@ -98,6 +100,15 @@ const Moon = styled.div`
 `;
 
 
+function Nifty(){
+  return(
+    <>
+      <h1>Hello World</h1>
+    </>
+  );  
+};
+
+
 function Orbit(){
   return<>
     <Wrappers>
@@ -126,8 +137,29 @@ const Transform = () => {
 const GenerativeArt = ({numRows = 8, numCols = 16}) => {
   const width = 400;
   const height = 200;
-  const mousepos = useMousePosition
-  console.log(mousepos);
+  const mousepos = useMousePosition();
+  // console.log(mousepos);
+   const {convasRef, canvasProps,canvasBox,ctx} = useCanvas(width,height);
+ if(mousepos && canvasBox){
+   draw(mousepos,canvasBox,width,height,numRows,numCols,ctx);
+ }
+ 
+}
+
+function draw(
+  mousePosition,
+  canvasBox,
+  width,
+  height,
+  numRows,
+  numCols,
+  ctx
+){
+  //ctx.clearRect(0,0,canvasBox.width,canvasBox.height);
+  ctx.beingPath();
+  ctx.arc(50,25,50,0,360);
+  ctx.fill();
+  ctx.closePath();
 }
 
 function Async(){
